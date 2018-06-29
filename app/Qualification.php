@@ -8,6 +8,9 @@ use Auth;
 
 class Qualification extends Model
 {
+
+    protected $guarded = [];
+
     public function users()
     {
         return $this->belongsToMany(User::class);

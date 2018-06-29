@@ -26,7 +26,8 @@ class QualificationController extends Controller
      */
     public function create()
     {
-        //
+        return view('curriculum.qualifications.form')
+            ->with('qualification', new Qualification());
     }
 
     /**
@@ -37,7 +38,18 @@ class QualificationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate(request(), [
+
+            'title' => 'required|alpha_dash',
+            'crebo' => 'required|alpha_dash',
+            'owner' => 'required|alpha_dash',
+            'duration' => 'required|integer|min:1',
+            'terms_per_year' => 'required|integer|min:1'
+
+        ]);
+
+        Qualification::create($request->all());
+        return redirect()->route('qualifications.index');
     }
 
     /**
