@@ -40,7 +40,7 @@ class QualificationController extends Controller
     {
         return view('curriculum.qualifications.show')
             ->with('qualification', $qualification)
-            ->with('cohorts', $qualification->cohorts);
+            ->with('cohorts', $qualification->cohorts()->orderBy('start_year', 'desc')->get());
     }
 
     public function edit(Qualification $qualification)

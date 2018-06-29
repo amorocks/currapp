@@ -31,7 +31,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="btn-group d-none d-md-block">
+            <div class="btn-group d-none d-md-flex">
                 @yield('buttons')
             </div>
         </nav>

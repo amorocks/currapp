@@ -6,10 +6,11 @@
 
 @section('content')
 
+<div class="breadcrumbs d-flex justify-content-between">
+	<small>Kwalificaties</small>
+	<small>Volg deze kwalificatie:</small>
+</div>
 <ul class="list-unstyled qualifications">
-	<li class="d-flex justify-content-end">
-		<small>Volg deze kwalificatie:</small>
-	</li>
 	@foreach($qualifications as $q)
 		<li>
 			<a href="{{ route('qualifications.show', $q) }}">
@@ -20,7 +21,7 @@
 			<div data-controller="subscribe" data-id="{{ $q->id }}">
 				<i data-action="click->subscribe#toggle" class="{{ $q->is_subscribed ? 'fas' : 'far' }} fa-fw fa-bookmark fa-lg"></i>
 			</div>
-	</li>
+		</li>
 	@endforeach
 </ul>
 

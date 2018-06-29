@@ -10662,11 +10662,6 @@ a.text-gray:focus {
   cursor: pointer;
 }
 
-.list-unstyled.qualifications li:first-child {
-  margin-bottom: -2rem;
-  color: #AAAEB2;
-}
-
 .container,
 .container-fluid {
   margin-top: 2rem;
