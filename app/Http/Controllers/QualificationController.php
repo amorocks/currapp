@@ -39,7 +39,8 @@ class QualificationController extends Controller
     public function show(Qualification $qualification)
     {
         return view('curriculum.qualifications.show')
-            ->with('qualification', $qualification);
+            ->with('qualification', $qualification)
+            ->with('cohorts', $qualification->cohorts);
     }
 
     public function edit(Qualification $qualification)

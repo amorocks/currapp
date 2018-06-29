@@ -4,12 +4,18 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\User;
+use App\Cohort;
 use Auth;
 
 class Qualification extends Model
 {
 
     protected $guarded = [];
+
+    public function cohorts()
+    {
+        return $this->hasMany(Cohort::class);
+    }
 
     public function users()
     {

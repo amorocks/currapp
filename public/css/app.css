@@ -10604,11 +10604,6 @@ a.text-gray:focus {
   font-family: sans-serif;
 }
 
-.list-unstyled li:first-child {
-  margin-bottom: -2rem;
-  color: #AAAEB2;
-}
-
 .list-unstyled li {
   margin: 2rem 0;
   display: -webkit-box;
@@ -10665,6 +10660,11 @@ a.text-gray:focus {
 
 .list-unstyled i {
   cursor: pointer;
+}
+
+.list-unstyled.qualifications li:first-child {
+  margin-bottom: -2rem;
+  color: #AAAEB2;
 }
 
 .container,

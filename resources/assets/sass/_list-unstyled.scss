@@ -1,10 +1,5 @@
 .list-unstyled{
 
-	li:first-child{
-		margin-bottom: -2rem;
-		color: map-get($grays, "500");
-	}
-
 	li{
 		margin: 2rem 0;
 		display: flex;
@@ -48,4 +43,10 @@
 		cursor: pointer;
 	}
 
+}
+
+
+.list-unstyled.qualifications li:first-child{
+	margin-bottom: -2rem;
+	color: map-get($grays, "500");
 }
