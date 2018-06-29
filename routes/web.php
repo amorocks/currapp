@@ -11,6 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::view('/', 'layouts.app')->name('home');
+
+Route::group(['prefix' => 'curriculum'], function(){
+	Route::resource('qualifications', 'QualificationController');
 });
