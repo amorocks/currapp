@@ -1,0 +1,23 @@
+.navbar{
+	box-shadow: 0px 2px 2px $primary-shadow;
+}
+
+.navbar h1{
+	font-size: initial;
+	line-height: initial;
+	margin: 0;
+}
+
+.navbar-brand span{
+	color: map-get($grays, "400");
+}
+
+.navbar .nav-item{
+	padding: 4px 1rem;
+	font-family: sans-serif;
+	font-weight: bold;
+}
+
+.navbar .nav-item.active .nav-link{
+	border-bottom: 1px solid white;
+}
