@@ -36,6 +36,7 @@
             </div>
         </nav>
         <div class="container">
+            @include('layouts.status')
             @yield('content')
         </div>
     </body>

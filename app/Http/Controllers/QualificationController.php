@@ -8,34 +8,18 @@ use Route;
 
 class QualificationController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         return view('curriculum.qualifications.index')
             ->with('qualifications', Qualification::all());
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('curriculum.qualifications.form')
             ->with('qualification', new Qualification());
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $this->validate(request(), [
@@ -52,48 +36,44 @@ class QualificationController extends Controller
         return redirect()->route('qualifications.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Qualification  $qualification
-     * @return \Illuminate\Http\Response
-     */
     public function show(Qualification $qualification)
     {
-        //
+        return view('curriculum.qualifications.show')
+            ->with('qualification', $qualification);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Qualification  $qualification
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Qualification $qualification)
     {
-        //
+        return view('curriculum.qualifications.form')
+            ->with('qualification', $qualification);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Qualification  $qualification
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Qualification $qualification)
     {
-        //
+        $this->validate(request(), [
+            'crebo' => 'required|alpha_dash',
+            'owner' => 'required|alpha_dash'
+        ]);
+
+        $qualification->sub_title = $request->sub_title;
+        $qualification->crebo = $request->crebo;
+        $qualification->owner = $request->owner;
+        $qualification->save();
+
+        return redirect()->route('qualifications.show', $qualification);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Qualification  $qualification
-     * @return \Illuminate\Http\Response
-     */
+    public function delete(Qualification $qualification)
+    {
+        return view('curriculum.qualifications.delete')
+            ->with('qualification', $qualification);
+    }
+
     public function destroy(Qualification $qualification)
     {
-        //
+        $qualification->delete();
+        return redirect()->route('qualifications.index')->with('status', [
+            'success' => 'Kwalificatie verwijderd!'
+        ]);
     }
 }

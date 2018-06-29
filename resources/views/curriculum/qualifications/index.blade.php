@@ -12,7 +12,7 @@
 	</li>
 	@foreach($qualifications as $q)
 		<li>
-			<a href="#">
+			<a href="{{ route('qualifications.show', $q) }}">
 				<h2>{{ $q->title }}</h2>
 				<p class="crebo">#{{ $q->crebo }}</p>
 				<p>{{ $q->sub_title }}</p>

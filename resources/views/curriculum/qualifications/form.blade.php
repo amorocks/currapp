@@ -1,14 +1,12 @@
 @extends('layouts.app')
 
 @section('buttons')
-    <a class="btn btn-outline-gray navbar-text" href="{{ URL::previous() }}">
-        <i class="fa fa-times" aria-hidden="true"></i> <span>Annuleren</span>
+    <a class="btn btn-outline-gray" href="{{ URL::previous() }}">
+        <i class="fas fa-times" aria-hidden="true"></i> <span>Annuleren</span>
     </a>
 @endsection
 
 @section('content')
-
-    @include('layouts.errors')
 
     @if($qualification->exists)
         <form method="POST" action="{{ route('qualifications.update', $qualification) }}">
@@ -71,13 +69,13 @@
         {{ csrf_field() }}
 
         <button type="submit" class="btn btn-success">
-            <i class="fa fa-floppy-o" aria-hidden="true"></i> Opslaan
+            <i class="far fa-save" aria-hidden="true"></i> Opslaan
         </button>
 
 
         @if($qualification->exists)
-        <a class="btn btn-danger" href="/qualifications/{{ $qualification->id }}/delete">
-            <i class="fa fa-trash-o" aria-hidden="true"></i> Verwijderen
+        <a class="btn btn-danger" href="{{ route('qualifications.delete', $qualification) }}">
+            <i class="far fa-trash-alt" aria-hidden="true"></i> Verwijderen
         </a>
         @endif
 
