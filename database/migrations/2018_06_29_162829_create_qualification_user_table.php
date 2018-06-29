@@ -16,6 +16,14 @@ class CreateQualificationUserTable extends Migration
         Schema::create('qualification_user', function (Blueprint $table) {
             $table->integer('qualification_id')->unsigned();
             $table->string('user_id');
+
+            $table->foreign('qualification_id')
+                    ->references('id')->on('qualifications')
+                    ->onDelete('cascade');
+
+            $table->foreign('user_id')
+                    ->references('id')->on('users')
+                    ->onDelete('cascade');
         });
     }
 
