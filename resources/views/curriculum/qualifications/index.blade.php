@@ -1,4 +1,9 @@
 @extends('layouts.app')
+
+@section('buttons')
+	<a href="" class="btn btn-outline-gray"><i class="fas fa-plus"></i> Nieuwe kwalificatie</a>
+@endsection
+
 @section('content')
 
 <ul class="list-unstyled qualifications">

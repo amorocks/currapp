@@ -8,8 +8,8 @@
 	margin: 0;
 }
 
-.navbar-brand span{
-	color: map-get($grays, "400");
+.navbar-brand span, .nav-link{
+	color: map-get($grays, "400") !important;
 }
 
 .navbar .nav-item{
@@ -20,4 +20,8 @@
 
 .navbar .nav-item.active .nav-link{
 	border-bottom: 1px solid white;
+}
+
+.navbar .btn-group{
+	font-family: sans-serif;
 }
