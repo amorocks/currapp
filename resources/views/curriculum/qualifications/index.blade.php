@@ -3,7 +3,7 @@
 
 <ul class="list-unstyled qualifications">
 	<li class="d-flex justify-content-end">
-		<small>Volg dit vak:</small>
+		<small>Volg deze kwalificatie:</small>
 	</li>
 	@foreach($qualifications as $q)
 		<li>
@@ -12,7 +12,9 @@
 				<p class="crebo">#{{ $q->crebo }}</p>
 				<p>{{ $q->sub_title }}</p>
 			</a>
-			<i class="far fa-bookmark fa-lg"></i>
+			<div data-controller="subscribe" data-id="{{ $q->id }}">
+				<i data-action="click->subscribe#toggle" class="{{ $q->is_subscribed ? 'fas' : 'far' }} fa-fw fa-bookmark fa-lg"></i>
+			</div>
 	</li>
 	@endforeach
 </ul>

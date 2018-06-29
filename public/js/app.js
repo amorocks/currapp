@@ -14268,6 +14268,7 @@ application.load(Object(__WEBPACK_IMPORTED_MODULE_1_stimulus_webpack_helpers__["
 //Axios
 window.axios = __webpack_require__(45);
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+window.axios.defaults.withCredentials = true;
 
 var token = document.head.querySelector('meta[name="csrf-token"]');
 if (token) {
@@ -19405,14 +19406,14 @@ var _class = function (_Controller) {
 		key: "toggle",
 		value: function toggle() {
 			var el = this.element;
+			var icon = el.getElementsByTagName("i")[0];
 
-			axios.post('/api/subscription/toggle/' + el.dataset.id).then(function (response) {
+			icon.className = "fas fa-fw fa-spinner fa-spin fa-lg";
 
-				var replacement = response.data ? "fas" : "far";
-				var old = response.data ? "far" : "fas";
+			axios.post('/subscription/toggle/' + el.dataset.id).then(function (response) {
 
-				el.getElementsByTagName("i")[0].classList.replace(old, replacement);
-				console.log(response.data);
+				var style = response.data ? "fas" : "far";
+				icon.className = style + " fa-fw fa-bookmark fa-lg";
 			}).catch(function (error) {
 				console.log(error);
 			});

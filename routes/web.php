@@ -20,6 +20,8 @@ Route::group(['middleware' => 'auth'], function(){
 		Route::resource('qualifications', 'QualificationController');
 	});
 
+	Route::post('/subscription/toggle/{qualification}', 'SubscriptionController@toggle');
+
 });
 
 

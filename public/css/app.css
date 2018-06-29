@@ -10495,6 +10495,10 @@ a.text-dark:focus {
   margin: 0;
 }
 
+.list-unstyled i {
+  cursor: pointer;
+}
+
 .container,
 .container-fluid {
   margin-top: 2rem;
