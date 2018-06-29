@@ -16,6 +16,7 @@ use Faker\Generator as Faker;
 $factory->define(App\Qualification::class, function (Faker $faker) {
     return [
     	'crebo' => $faker->randomNumber(5),
+    	'owner' => $faker->word();
         'title' => strtoupper($faker->word()),
         'sub_title' => $faker->text(20),
         'duration' => $faker->numberBetween(1, 3),

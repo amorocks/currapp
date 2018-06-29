@@ -16,6 +16,7 @@ class CreateQualificationsTable extends Migration
         Schema::create('qualifications', function (Blueprint $table) {
             $table->increments('id');
             $table->string('crebo')->nullable();
+            $table->string('owner');
             $table->string('title');
             $table->string('sub_title')->nullable();
             $table->integer('duration');
