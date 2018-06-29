@@ -14,12 +14,13 @@
 
 Route::group(['middleware' => 'auth'], function(){
 
-	Route::view('/', 'layouts.app')->name('home');
+	Route::get('/', 'DashboardController@show')->name('home');
 
 	Route::group(['prefix' => 'curriculum'], function(){
 		Route::resource('qualifications', 'QualificationController');
 	});
 
+	//AJAX routes
 	Route::post('/subscription/toggle/{qualification}', 'SubscriptionController@toggle');
 
 });
