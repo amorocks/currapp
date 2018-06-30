@@ -13,6 +13,11 @@ class Term extends Model
     	return $this->belongsTo('App\Cohort');
     }
 
+    public function courses()
+    {
+        return $this->belongsToMany('App\Course', 'schedules')->using('App\Schedule');
+    }
+
     public function getTitleAttribute()
 	{
 		return 'p' . str_pad($this->order, 2, '0', STR_PAD_LEFT);

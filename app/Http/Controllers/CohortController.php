@@ -43,7 +43,6 @@ class CohortController extends Controller
             {
                 $cohort->terms()->save(new Term([
                     'order' => $i,
-                    'duration' => 1
                 ]));
             }
         }

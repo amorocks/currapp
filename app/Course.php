@@ -8,15 +8,14 @@ use Auth;
 class Course extends Model
 {
 	protected $guarded = [];
-	protected $appends = ['order'];
 
     public function topic()
     {
     	return $this->belongsTo('App\Topic');
     }
 
-    public function getOrderAttribute()
+    public function terms()
     {
-    	return (int)($this->owner == Auth::user()->id);
+        return $this->belongsToMany('App\Term', 'schedules')->using('App\Schedule');
     }
 }
