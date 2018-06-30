@@ -18,6 +18,7 @@ Route::group(['middleware' => 'auth'], function(){
 
 	Route::group(['prefix' => 'curriculum'], function(){
 		Route::resource('qualifications', 'QualificationController');
+		Route::resource('qualifications.cohorts', 'CohortController', ['only' => ['create', 'store', 'show']]);
 	});
 
 	//AJAX routes
