@@ -18,7 +18,8 @@ class CreateTermsTable extends Migration
             $table->integer('cohort_id')->unsigned();
             $table->string('order');
             $table->string('sub_title')->nullable();
-            $table->integer('duration');
+            $table->date('start');
+            $table->date('end');
             $table->timestamps();
 
             $table->foreign('cohort_id')
