@@ -40,48 +40,44 @@ class CourseController extends Controller
         return redirect()->route('courses.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Course  $course
-     * @return \Illuminate\Http\Response
-     */
     public function show(Course $course)
     {
-        //
+        return view('courses.show')
+            ->with(compact('course'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Course  $course
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Course $course)
     {
-        //
+        return view('courses.form')
+            ->with(compact('course'))
+            ->with('topics', Topic::all());
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Course  $course
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Course $course)
     {
-        //
+        $this->validate(request(), [
+            'title' => 'required|string',
+            'topic_id' => 'required|integer|min:1',
+            'owner' => 'required|alpha_dash'
+        ]);
+
+        $course->title = $request->title;
+        $course->topic_id = $request->topic_id;
+        $course->owner = $request->owner;
+        $course->save();
+
+        return redirect()->route('courses.show', $course);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Course  $course
-     * @return \Illuminate\Http\Response
-     */
+    public function delete(Course $course)
+    {
+        return view('courses.delete')
+            ->with(compact('course'));
+    }
+
     public function destroy(Course $course)
     {
-        //
+        $course->delete();
+        return redirect()->route('courses.index');
     }
 }

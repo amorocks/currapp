@@ -27,7 +27,7 @@
                 <select class="form-control" name="topic_id" id="topic_id">
                     <option value="0">- kies -</option>
                     @foreach($topics as $topic)
-                        <option value="{{ $topic->id }}" @if(old('topic_id') == $topic->id) selected @endif>{{ $topic->title }}</option>
+                        <option value="{{ $topic->id }}" @if(old('topic_id', $course->topic->id) == $topic->id) selected @endif>{{ $topic->title }}</option>
                     @endforeach
                 </select>
             </div>
