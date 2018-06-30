@@ -3,7 +3,6 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Qualification;
 
 class Cohort extends Model
 {
@@ -11,7 +10,7 @@ class Cohort extends Model
 
     public function qualification()
     {
-    	return $this->belongsTo(Qualification::class);
+    	return $this->belongsTo('App\Qualification');
     }
 
     public function getTitleAttribute($nospaces = false, $separator = '-')

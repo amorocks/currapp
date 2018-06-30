@@ -13,7 +13,7 @@
 <ul class="list-unstyled qualifications">
 	@foreach($qualifications as $q)
 		<li>
-			<a href="{{ route('qualifications.show', $q) }}">
+			<a href="{{ route('qualifications.cohorts.index', $q) }}">
 				<h2>{{ $q->title }}</h2>
 				<p class="crebo">#{{ $q->crebo }}</p>
 				<p>{{ $q->sub_title }}</p>

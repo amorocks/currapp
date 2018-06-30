@@ -3,8 +3,6 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\User;
-use App\Cohort;
 use Auth;
 
 class Qualification extends Model
@@ -14,12 +12,12 @@ class Qualification extends Model
 
     public function cohorts()
     {
-        return $this->hasMany(Cohort::class);
+        return $this->hasMany('App\Cohort');
     }
 
     public function users()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany('App\User');
     }
 
     public function getIsSubscribedAttribute()

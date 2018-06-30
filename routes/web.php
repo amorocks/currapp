@@ -17,8 +17,9 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/', 'DashboardController@show')->name('home');
 
 	Route::group(['prefix' => 'curriculum'], function(){
-		Route::resource('qualifications', 'QualificationController');
-		Route::resource('qualifications.cohorts', 'CohortController', ['only' => ['create', 'store', 'show']]);
+		Route::resource('qualifications', 'QualificationController', ['except' => ['show']]);
+		Route::resource('qualifications.cohorts', 'CohortController', ['only' => ['index', 'create', 'store', 'show']]);
+		Route::resource('qualifications.cohorts.terms', 'TermController', ['only' => ['index']]);
 	});
 
 	//AJAX routes

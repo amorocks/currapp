@@ -4,14 +4,22 @@ namespace App\Http\Controllers;
 
 use App\Qualification;
 use App\Cohort;
+use App\Term;
 use Illuminate\Http\Request;
 
 class CohortController extends Controller
 {
 
+    public function index(Qualification $qualification)
+    {
+        return view('curriculum.cohorts.index')
+            ->with('qualification', $qualification)
+            ->with('cohorts', $qualification->cohorts()->orderBy('start_year', 'desc')->get());
+    }
+
     public function create(Qualification $qualification)
     {
-        return view('curriculum.cohorts.form')
+        return view('curriculum.cohorts.create')
             ->with('qualification', $qualification)
             ->with('cohort', new Cohort());
     }
@@ -25,17 +33,17 @@ class CohortController extends Controller
         $cohort = new Cohort();
         $cohort->start_year = $request->start_year;
         $cohort->exam_year = $cohort->start_year + $qualification->duration;
-        $qualification->cohorts()->save($cohort);
+        $cohort = $qualification->cohorts()->save($cohort);
 
         if($request->create_terms == 'yes')
         {
             $terms = $qualification->duration * $qualification->terms_per_year;
             for($i = 1; $i <= $terms; $i++)
             {
-                // $term = new Term();
-                // $term->order = $i;
-                // $term->duration = 1;
-                // $cohorts->terms()->save($term);
+                $cohort->terms()->save(new Term([
+                    'order' => $i,
+                    'duration' => 1
+                ]));
             }
         }
 
@@ -46,7 +54,8 @@ class CohortController extends Controller
     {
         return view('curriculum.cohorts.show')
             ->with(compact('qualification'))
-            ->with(compact('cohort'));
+            ->with(compact('cohort'))
+            ->with('terms', $cohort->terms);
     }
 
 }

@@ -36,13 +36,6 @@ class QualificationController extends Controller
         return redirect()->route('qualifications.index');
     }
 
-    public function show(Qualification $qualification)
-    {
-        return view('curriculum.qualifications.show')
-            ->with('qualification', $qualification)
-            ->with('cohorts', $qualification->cohorts()->orderBy('start_year', 'desc')->get());
-    }
-
     public function edit(Qualification $qualification)
     {
         return view('curriculum.qualifications.form')
