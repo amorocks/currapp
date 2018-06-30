@@ -10690,3 +10690,7 @@ form {
   font-family: sans-serif;
 }
 
+.cohort-grid {
+  display: grid;
+}
+
