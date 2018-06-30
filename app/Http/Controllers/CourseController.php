@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Course;
+use App\Topic;
 use Illuminate\Http\Request;
 use Auth;
 
@@ -20,25 +21,23 @@ class CourseController extends Controller
             ->with(compact('courses'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        return view('courses.form')
+            ->with('course', new Course())
+            ->with('topics', Topic::all());
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $this->validate(request(), [
+            'title' => 'required|string',
+            'topic_id' => 'required|integer|min:1',
+            'owner' => 'required|alpha_dash'
+        ]);
+
+        Course::create($request->all());
+        return redirect()->route('courses.index');
     }
 
     /**

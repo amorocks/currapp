@@ -23,7 +23,7 @@ class TopicController extends Controller
     public function store(Request $request)
     {
         $this->validate(request(), [
-            'title' => 'required|alpha_dash',
+            'title' => 'required|string',
             'owner' => 'required|alpha_dash'
         ]);
 
