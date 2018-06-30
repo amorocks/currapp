@@ -22,8 +22,8 @@
                         <li class="nav-item @if(Route::currentRouteName() == 'home') active @endif">
                             <a class="nav-link" href="{{ route('home') }}">Start</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Vakken</a>
+                        <li class="nav-item @if(starts_with(Route::current()->uri, 'courses')) active @endif">
+                            <a class="nav-link" href="{{ route('courses.index') }}">Vakken</a>
                         </li>
                         <li class="nav-item @if(starts_with(Route::current()->uri, 'curriculum')) active @endif">
                             <a class="nav-link" href="{{ route('qualifications.index') }}">Curriculum</a>

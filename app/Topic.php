@@ -12,4 +12,9 @@ class Topic extends Model
     {
     	return $this->belongsToMany('App\Cohort');
     }
+
+    public function courses()
+    {
+    	return $this->hasMany('App\Course');
+    }
 }

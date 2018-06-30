@@ -18,6 +18,9 @@ class DatabaseSeeder extends Seeder
     		$q->cohorts()->save($cohort);
     	});
 
-        factory(App\Topic::class, 6)->create();
+        factory(App\Topic::class, 6)->create()->each(function ($topic){
+            $topic->courses()->save(factory(App\Course::class)->make());
+            $topic->courses()->save(factory(App\Course::class)->make());
+        });
     }
 }

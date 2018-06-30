@@ -24,7 +24,7 @@
 	<div class="cohort-grid" style="grid-template-columns: repeat({{ $qualification->terms_per_year }}, 1fr);">
 	    @foreach ($terms as $term)
 	        <a class="link-card" href="#"
-	            style="grid-column: {{ $term->order_in_year }} / span {{ $term->duration }};">
+	            style="grid-column: {{ $term->order_in_year }};">
 	            <h4>{{ $term->title }}</h4>
 	            <p class="card-text">{{ $term->sub_title }}</p>
 	        </a>
