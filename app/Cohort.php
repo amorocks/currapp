@@ -13,6 +13,11 @@ class Cohort extends Model
     	return $this->belongsTo('App\Qualification');
     }
 
+    public function terms()
+    {
+        return $this->hasMany('App\Term');
+    }
+
     public function getTitleAttribute($nospaces = false, $separator = '-')
     {
         $title = $this->start_year;
