@@ -11,7 +11,7 @@
     </head>
     <body>
 
-        <nav class="navbar navbar-dark bg-primary navbar-expand-lg justify-content-between">
+        <nav class="navbar topnav navbar-dark bg-primary navbar-expand-lg justify-content-between">
             <div class="d-flex align-items-center">
                 <h1><a class="navbar-brand" href="{{ route('home') }}">Curr<span>App</span></a></h1>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,6 +35,7 @@
                 @yield('buttons')
             </div>
         </nav>
+        @yield('subnav')
         <div class="container">
             @include('layouts.status')
             @yield('content')
