@@ -28,6 +28,9 @@
                         <li class="nav-item @if(starts_with(Route::current()->uri, 'curriculum')) active @endif">
                             <a class="nav-link" href="{{ route('qualifications.index') }}">Curriculum</a>
                         </li>
+                        <li class="nav-item @if(starts_with(Route::current()->uri, 'topics')) active @endif">
+                            <a class="nav-link" href="{{ route('topics.index') }}">Leerlijnen</a>
+                        </li>
                     </ul>
                 </div>
             </div>

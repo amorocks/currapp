@@ -15,6 +15,7 @@
 Route::group(['middleware' => 'auth'], function(){
 
 	Route::get('/', 'DashboardController@show')->name('home');
+	Route::resource('topics', 'TopicController');
 
 	Route::group(['prefix' => 'curriculum'], function(){
 		Route::resource('qualifications', 'QualificationController', ['except' => ['show']]);

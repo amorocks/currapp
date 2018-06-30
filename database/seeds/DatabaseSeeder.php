@@ -17,5 +17,7 @@ class DatabaseSeeder extends Seeder
     		$cohort = new App\Cohort(['start_year' => 2018, 'exam_year' => 2018+$q->duration]);
     		$q->cohorts()->save($cohort);
     	});
+
+        factory(App\Topic::class, 6)->create();
     }
 }

@@ -47,7 +47,7 @@ class CohortController extends Controller
             }
         }
 
-        return redirect()->route('qualifications.show', $qualification);
+        return redirect()->route('qualifications.cohorts.index', $qualification);
     }
 
     public function show(Qualification $qualification, Cohort $cohort)
