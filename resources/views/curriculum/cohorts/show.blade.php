@@ -26,18 +26,34 @@
 @section('content')
 
 	<div class="curriculum">
-
-        @foreach($topics as $topic)
-            <div class="topic" style="
-                grid-column: {{ $loop->iteration+1 }}
-            ">{{ $topic->title }}</div>
-        @endforeach
+        
+        <div class="topics" style="
+            grid-template-columns: repeat({{ $count  }}, 1fr);
+        ">
+            @foreach($topics as $topic)
+                <div class="topic" style="
+                    grid-column: {{ $topic_numbers[$topic->id] }}
+                ">{{ $topic->title }}</div>
+            @endforeach
+        </div>
 
         @foreach($terms as $term)
-            <div class="term" style="
-                grid-row: {{ $term->order+1 }};
-            ">{{ $term->title }}</div>
-        @endforeach   
+
+            @if(!($loop->index % $qualification->terms_per_year))
+                <div class="spacer"></div>
+            @endif
+
+            <div class="term" 
+                style="grid-template-columns: repeat({{ $count  }}, 1fr);
+                ">
+                <div class="number">{{ $term->title }}</div>
+                @foreach($term->courses as $course)
+                    <div class="course" style="
+                        grid-column: {{ $topic_numbers[$course->topic->id] }}
+                    ">{{ $course->title }}</div>
+                @endforeach
+            </div>
+        @endforeach 
     </div>
 
 @endsection

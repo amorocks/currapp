@@ -10681,16 +10681,29 @@ a.text-gray:focus {
   cursor: pointer;
 }
 
-.curriculum {
+.curriculum .topics,
+.curriculum .term {
   display: grid;
 }
 
-.curriculum .term {
-  grid-column: 1 / 1;
+.curriculum .topics {
+  margin-bottom: 1rem;
 }
 
-.curriculum .topic {
-  grid-row: 1 / 1;
+.curriculum .number {
+  grid-column: 1;
+}
+
+.curriculum .term {
+  padding: .5rem;
+}
+
+.curriculum .term:nth-child(odd) {
+  background-color: #F2F9FF;
+}
+
+.curriculum .spacer:not(:nth-child(2)) {
+  height: 4rem;
 }
 
 .container,

@@ -52,11 +52,21 @@ class CohortController extends Controller
 
     public function show(Qualification $qualification, Cohort $cohort)
     {
+        $topic_numbers = array();
+        $i = 2;
+        foreach ($cohort->topics as $topic)
+        {
+            $topic_numbers[$topic->id] = $i;
+            $i++;
+        }
+
         return view('curriculum.cohorts.show')
             ->with(compact('qualification'))
             ->with(compact('cohort'))
             ->with('terms', $cohort->terms)
-            ->with('topics', $cohort->topics);
+            ->with('topics', $cohort->topics)
+            ->with(compact('topic_numbers'))
+            ->with('count', $cohort->topics->count()+1);
     }
 
     public function edit_topics(Qualification $qualification, Cohort $cohort)

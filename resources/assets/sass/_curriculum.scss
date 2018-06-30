@@ -1,12 +1,26 @@
 
 .curriculum{
-	display: grid;
-
-	.term{
-		grid-column: 1 / 1;
+	.topics, .term{
+		display: grid;
 	}
 
-	.topic{
-		grid-row: 1 / 1;
+	.topics{
+		margin-bottom: 1rem;
+	}
+	
+	.number{
+		grid-column: 1;
+	}
+
+	.term{
+		padding: .5rem;
+	}
+
+	.term:nth-child(odd){
+		background-color: map-get($grays, "200");
+	}
+
+	.spacer:not(:nth-child(2)){
+		height: 4rem;
 	}
 }
