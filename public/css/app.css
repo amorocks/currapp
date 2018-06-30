@@ -10681,6 +10681,18 @@ a.text-gray:focus {
   cursor: pointer;
 }
 
+.curriculum {
+  display: grid;
+}
+
+.curriculum .term {
+  grid-column: 1 / 1;
+}
+
+.curriculum .topic {
+  grid-row: 1 / 1;
+}
+
 .container,
 .container-fluid {
   margin-top: 2rem;

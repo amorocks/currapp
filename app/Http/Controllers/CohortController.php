@@ -56,7 +56,8 @@ class CohortController extends Controller
         return view('curriculum.cohorts.show')
             ->with(compact('qualification'))
             ->with(compact('cohort'))
-            ->with('terms', $cohort->terms);
+            ->with('terms', $cohort->terms)
+            ->with('topics', $cohort->topics);
     }
 
     public function edit_topics(Qualification $qualification, Cohort $cohort)

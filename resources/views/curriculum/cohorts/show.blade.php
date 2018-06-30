@@ -25,6 +25,19 @@
 
 @section('content')
 
-	{{ $cohort->topics }}
+	<div class="curriculum">
+
+        @foreach($topics as $topic)
+            <div class="topic" style="
+                grid-column: {{ $loop->iteration+1 }}
+            ">{{ $topic->title }}</div>
+        @endforeach
+
+        @foreach($terms as $term)
+            <div class="term" style="
+                grid-row: {{ $term->order+1 }};
+            ">{{ $term->title }}</div>
+        @endforeach   
+    </div>
 
 @endsection

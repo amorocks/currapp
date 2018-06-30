@@ -1,0 +1,12 @@
+
+.curriculum{
+	display: grid;
+
+	.term{
+		grid-column: 1 / 1;
+	}
+
+	.topic{
+		grid-row: 1 / 1;
+	}
+}
