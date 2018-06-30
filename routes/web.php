@@ -21,6 +21,8 @@ Route::group(['middleware' => 'auth'], function(){
 		Route::resource('qualifications', 'QualificationController', ['except' => ['show']]);
 		Route::resource('qualifications.cohorts', 'CohortController', ['only' => ['index', 'create', 'store', 'show']]);
 		Route::resource('qualifications.cohorts.terms', 'TermController', ['only' => ['index']]);
+		Route::get('/qualifications/{qualification}/cohorts/{cohort}/topics', 'CohortController@edit_topics')->name('qualifications.cohorts.topics.edit');
+		Route::post('/qualifications/{qualification}/cohorts/{cohort}/topics', 'CohortController@update_topics')->name('qualifications.cohorts.topics.update');
 	});
 
 	//AJAX routes

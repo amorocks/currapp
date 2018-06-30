@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Topic;
 use App\Qualification;
 use App\Cohort;
 use App\Term;
@@ -58,4 +59,23 @@ class CohortController extends Controller
             ->with('terms', $cohort->terms);
     }
 
+    public function edit_topics(Qualification $qualification, Cohort $cohort)
+    {
+        return view('curriculum.cohorts.topics')
+            ->with(compact('qualification'))
+            ->with(compact('cohort'))
+            ->with('topics', Topic::all());
+    }
+
+    public function update_topics(Request $request, Qualification $qualification, Cohort $cohort)
+    {
+        $this->validate(request(), [
+            'topics.*' => 'nullable|integer'
+        ]);
+
+        $topic_ids = collect($request->topics)->keys();
+        $cohort->topics()->sync($topic_ids);
+
+        return redirect()->route('qualifications.cohorts.show', [$qualification, $cohort]);
+    }
 }

@@ -10694,3 +10694,7 @@ form {
   display: grid;
 }
 
+table label {
+  margin: 0;
+}
+
