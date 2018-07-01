@@ -12,6 +12,13 @@ class DashboardController extends Controller
     {
     	$today = date('Y-m-d');
     	$periodisation = Periodisation::whereDate('start', '<=', $today)->whereDate('end', '>=', $today)->first();
+
+    	if($periodisation == null)
+    	{
+    		return view('dashboard.simple')
+    			->with('user', Auth::user());
+    	}
+
     	$schoolyear = $periodisation->schoolyear;
     	$term_order = $periodisation->term_order;
     	$qualifications = Auth::user()->qualifications;
@@ -37,7 +44,7 @@ class DashboardController extends Controller
     		}
     	}
 
-    	return view('dashboard')
+    	return view('dashboard.extended')
     		->with('user', Auth::user())
     		->with('terms', $now);
     }

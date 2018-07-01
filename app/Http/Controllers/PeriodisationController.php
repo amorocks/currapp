@@ -26,9 +26,15 @@ class PeriodisationController extends Controller
             'schoolyear' => 'required|integer',
             'start' => 'required|date',
             'end' => 'required|date'
-        ]);	
+        ]);
 
-    	Periodisation::create($request->all());
+    	$periodisation = new Periodisation();
+    	$periodisation->term_order = $request->term_order;
+    	$periodisation->schoolyear = $request->schoolyear;
+        $periodisation->start = date('Y-m-d', strtotime($request->start));
+    	$periodisation->end = date('Y-m-d', strtotime($request->end));
+    	$periodisation->save();
+
         return redirect()->route('periodisations.index');
     }
 
@@ -49,5 +55,19 @@ class PeriodisationController extends Controller
     	$periodisation->end = date('Y-m-d', strtotime($request->end));
     	$periodisation->save();
         return redirect()->route('periodisations.index');
+    }
+
+    public function delete(Periodisation $periodisation)
+    {
+    	return view('periodisations.delete')
+    		->with(compact('periodisation'));
+    }
+
+    public function destroy(Periodisation $periodisation)
+    {
+    	$periodisation->delete();
+    	return redirect()->route('periodisations.index')->with('status', [
+            'success' => 'Periodisering verwijderd!'
+        ]);
     }
 }
