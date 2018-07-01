@@ -4,14 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Topic;
+use Auth;
 
 class TopicController extends Controller
 {
 
     public function index()
     {
+        //Sort with own topics first
+        $topics = Topic::all()->sortByDesc(function($topic, $key){
+            return (int)($topic->owner == Auth::user()->id);
+        })->values();
+
         return view('topics.index')
-            ->with('topics', Topic::all());
+            ->with(compact('topics'));
     }
 
     public function create()

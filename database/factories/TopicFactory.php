@@ -15,7 +15,7 @@ use Faker\Generator as Faker;
 
 $factory->define(App\Topic::class, function (Faker $faker) {
     return [
-    	'owner' => ucfirst($faker->word()),
+    	'owner' => $faker->bothify('??##'),
         'title' => ucfirst($faker->word())
     ];
 });
