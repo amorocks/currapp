@@ -1,12 +1,12 @@
 
 //Popper
-window.Popper = require('popper.js').default;
+//window.Popper = require('popper.js').default;
 
 //jQuery + Bootstrap
-try {
-    window.$ = window.jQuery = require('jquery');
-    require('bootstrap');
-} catch (e) {}
+// try {
+//     window.$ = window.jQuery = require('jquery');
+//     require('bootstrap');
+// } catch (e) {}
 
 //Turbolinks
 var Turbolinks = require("turbolinks");
