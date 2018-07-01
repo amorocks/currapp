@@ -8,7 +8,14 @@
 		<ul>
 			
 			@foreach($terms[$q->id] as $term)
-				<li>{{ $term->title }}</li>
+				<li>
+					{{ $term->title }}
+					<ul>
+						@foreach($term->courses as $course)
+							<li>{{ $course->title }}</li>
+						@endforeach
+					</ul>
+				</li>
 			@endforeach
 			
 		</ul>
