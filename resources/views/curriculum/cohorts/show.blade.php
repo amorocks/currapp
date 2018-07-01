@@ -23,12 +23,14 @@
 	</nav>
 @endsection
 
+@section('container', 'container-fluid')
+
 @section('content')
 
 	<div class="curriculum">
         
         <div class="topics" style="
-            grid-template-columns: repeat({{ $count  }}, 1fr);
+            grid-template-columns: 45px repeat({{ $cohort->topics->count()  }}, 1fr) 30px;
         ">
             @foreach($topics as $topic)
                 <div class="topic" style="
@@ -43,8 +45,8 @@
                 <div class="spacer"></div>
             @endif
 
-            <div class="term" 
-                style="grid-template-columns: repeat({{ $count  }}, 1fr);
+            <div class="term" style="
+                grid-template-columns: 45px repeat({{ $cohort->topics->count()  }}, 1fr) 30px;
                 ">
                 <div class="number">{{ $term->title }}</div>
                 @foreach($term->courses as $course)
@@ -52,6 +54,7 @@
                         grid-column: {{ $topic_numbers[$course->topic->id] }}
                     ">{{ $course->title }}</div>
                 @endforeach
+                <a class="add-course" href="{{ route('qualifications.cohorts.terms.courses', [$qualification, $cohort, $term]) }}" style="grid-column: {{ $cohort->topics->count()+2  }};"><i class="fas fa-pen"></i></a>
             </div>
         @endforeach 
     </div>

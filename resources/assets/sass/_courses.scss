@@ -1,0 +1,24 @@
+.courses{
+
+	ul{
+		list-style-type: none;
+		padding: 0;
+	}
+
+	li{
+		margin: .5rem 0;
+		color: $primary;
+		cursor: pointer;
+	}
+
+	li:hover{
+		text-decoration: underline;
+		color: $secondary;
+	}
+
+}
+
+.courses > *{
+	margin: 1rem 0;
+	font-family: sans-serif;
+}

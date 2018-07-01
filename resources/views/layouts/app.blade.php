@@ -39,7 +39,7 @@
             </div>
         </nav>
         @yield('subnav')
-        <div class="container">
+        <div class="@yield('container', 'container')">
             @include('layouts.status')
             @yield('content')
         </div>

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('buttons-right')
-<a class="btn btn-outline-gray navbar-text" href="{{ URL::previous() }}">
+@section('buttons')
+<a class="btn btn-outline-gray" href="{{ URL::previous() }}">
     <i class="fas fa-times" aria-hidden="true"></i> <span>Annuleren</span>
 </a>
 @endsection

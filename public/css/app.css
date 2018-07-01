@@ -10684,18 +10684,25 @@ a.text-gray:focus {
 .curriculum .topics,
 .curriculum .term {
   display: grid;
+  padding: .5rem;
+}
+
+.curriculum .term {
+  grid-auto-flow: column;
 }
 
 .curriculum .topics {
   margin-bottom: 1rem;
 }
 
-.curriculum .number {
-  grid-column: 1;
+.curriculum .number,
+.curriculum .topic {
+  font-weight: bold;
+  font-family: sans-serif;
 }
 
-.curriculum .term {
-  padding: .5rem;
+.curriculum .number {
+  grid-column: 1;
 }
 
 .curriculum .term:nth-child(odd) {
@@ -10704,6 +10711,36 @@ a.text-gray:focus {
 
 .curriculum .spacer:not(:nth-child(2)) {
   height: 4rem;
+}
+
+.curriculum .add-course {
+  display: none;
+  color: #007bff;
+}
+
+.curriculum .term:hover .add-course {
+  display: initial;
+}
+
+.courses ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.courses li {
+  margin: .5rem 0;
+  color: #007bff;
+  cursor: pointer;
+}
+
+.courses li:hover {
+  text-decoration: underline;
+  color: #6c757d;
+}
+
+.courses > * {
+  margin: 1rem 0;
+  font-family: sans-serif;
 }
 
 .container,

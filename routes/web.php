@@ -24,10 +24,12 @@ Route::group(['middleware' => 'auth'], function(){
 		Route::resource('qualifications.cohorts.terms', 'TermController', ['only' => ['index']]);
 		Route::get('/qualifications/{qualification}/cohorts/{cohort}/topics', 'CohortController@edit_topics')->name('qualifications.cohorts.topics.edit');
 		Route::post('/qualifications/{qualification}/cohorts/{cohort}/topics', 'CohortController@update_topics')->name('qualifications.cohorts.topics.update');
+		Route::get('/qualifications/{qualification}/cohorts/{cohort}/terms/{term}/courses', 'TermController@courses')->name('qualifications.cohorts.terms.courses');
 	});
 
 	//AJAX routes
 	Route::post('/subscription/toggle/{qualification}', 'SubscriptionController@toggle');
+	Route::post('/curriculum/toggle/term/{term}/course/{course}', 'TermController@toggle_course');
 
 });
 

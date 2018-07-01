@@ -65,8 +65,7 @@ class CohortController extends Controller
             ->with(compact('cohort'))
             ->with('terms', $cohort->terms)
             ->with('topics', $cohort->topics)
-            ->with(compact('topic_numbers'))
-            ->with('count', $cohort->topics->count()+1);
+            ->with(compact('topic_numbers'));
     }
 
     public function edit_topics(Qualification $qualification, Cohort $cohort)

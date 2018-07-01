@@ -2,18 +2,24 @@
 .curriculum{
 	.topics, .term{
 		display: grid;
+		padding: .5rem;
+	}
+
+	.term{
+		grid-auto-flow: column;
 	}
 
 	.topics{
 		margin-bottom: 1rem;
 	}
-	
-	.number{
-		grid-column: 1;
+
+	.number, .topic{
+		font-weight: bold;
+		font-family: sans-serif;
 	}
 
-	.term{
-		padding: .5rem;
+	.number{
+		grid-column: 1;
 	}
 
 	.term:nth-child(odd){
@@ -22,5 +28,14 @@
 
 	.spacer:not(:nth-child(2)){
 		height: 4rem;
+	}
+
+	.add-course{
+		display: none;
+		color: $primary;
+	}
+
+	.term:hover .add-course{
+		display: initial;
 	}
 }
