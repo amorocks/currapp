@@ -27,6 +27,10 @@ Route::group(['middleware' => 'auth'], function(){
 		Route::get('/qualifications/{qualification}/cohorts/{cohort}/terms/{term}/courses', 'TermController@courses')->name('qualifications.cohorts.terms.courses');
 	});
 
+	Route::group(['prefix' => 'settings'], function(){
+		Route::resource('periodisations', 'PeriodisationController', ['excpet' => 'show']);
+	});
+
 	//AJAX routes
 	Route::post('/subscription/toggle/{qualification}', 'SubscriptionController@toggle');
 	Route::post('/curriculum/toggle/term/{term}/course/{course}', 'TermController@toggle_course');

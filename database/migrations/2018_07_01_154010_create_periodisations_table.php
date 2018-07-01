@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTermsTable extends Migration
+class CreatePeriodisationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,13 @@ class CreateTermsTable extends Migration
      */
     public function up()
     {
-        Schema::create('terms', function (Blueprint $table) {
+        Schema::create('periodisations', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('cohort_id')->unsigned();
-            $table->string('order');
-            $table->string('sub_title')->nullable();
+            $table->integer('term_order');
+            $table->integer('schoolyear');
+            $table->date('start');
+            $table->date('end');
             $table->timestamps();
-
-            $table->foreign('cohort_id')
-                    ->references('id')->on('cohorts')
-                    ->onDelete('cascade');
         });
     }
 
@@ -33,6 +30,6 @@ class CreateTermsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('terms');
+        Schema::dropIfExists('periodisations');
     }
 }

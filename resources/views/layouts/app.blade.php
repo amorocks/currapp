@@ -34,7 +34,7 @@
                         <li class="nav-item dropdown" data-controller="dropdown">
                             <a class="nav-link dropdown-toggle" data-target="dropdown.button" data-action="click->dropdown#toggle click@window->dropdown#hide" aria-expanded="false">Overige</a>
                             <div class="dropdown-menu" data-target="dropdown.menu">
-                                <a href="#" class="dropdown-item">Datums voor periodes</a>
+                                <a href="{{ route('periodisations.index') }}" class="dropdown-item">Datums voor periodes</a>
                             </div>
                         </li>
                     </ul>
