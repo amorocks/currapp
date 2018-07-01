@@ -9,7 +9,7 @@
 			
 			@foreach($terms[$q->id] as $term)
 				<li>
-					{{ $term->title }}
+					<a href="{{ route('qualifications.cohorts.show', [$q, $term->cohort]) }}">{{ $term->title }}</a>
 					<ul>
 						@foreach($term->courses as $course)
 							<li>{{ $course->title }}</li>
