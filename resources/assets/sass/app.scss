@@ -29,3 +29,7 @@ form{
 table label{
 	margin: 0;
 }
+
+a:not([href]){
+	cursor: pointer;
+}

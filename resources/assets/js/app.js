@@ -1,8 +1,8 @@
 
-//Popper
-//window.Popper = require('popper.js').default;
+// //Popper
+// window.Popper = require('popper.js').default;
 
-//jQuery + Bootstrap
+// //jQuery + Bootstrap
 // try {
 //     window.$ = window.jQuery = require('jquery');
 //     require('bootstrap');

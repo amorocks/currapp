@@ -10592,7 +10592,8 @@ a.text-gray:focus {
 }
 
 .navbar-brand span,
-.nav-link {
+.nav-link,
+.dropdown-item {
   color: #C2C7CC !important;
 }
 
@@ -10621,6 +10622,20 @@ a.text-gray:focus {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+}
+
+.dropdown-menu {
+  background-color: #364D63;
+  -webkit-box-shadow: 0px 2px 2px #1F394C;
+          box-shadow: 0px 2px 2px #1F394C;
+  border: none;
+  border-radius: 0;
+  left: initial;
+  top: 55px;
+}
+
+.dropdown-menu .dropdown-item:hover {
+  background-color: #364D63;
 }
 
 .list-unstyled li {
@@ -10758,5 +10773,9 @@ form {
 
 table label {
   margin: 0;
+}
+
+a:not([href]) {
+  cursor: pointer;
 }
 

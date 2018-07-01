@@ -31,6 +31,12 @@
                         <li class="nav-item @if(starts_with(Route::current()->uri, 'topics')) active @endif">
                             <a class="nav-link" href="{{ route('topics.index') }}">Leerlijnen</a>
                         </li>
+                        <li class="nav-item dropdown" data-controller="dropdown">
+                            <a class="nav-link dropdown-toggle" data-target="dropdown.button" data-action="click->dropdown#toggle click@window->dropdown#hide" aria-expanded="false">Overige</a>
+                            <div class="dropdown-menu" data-target="dropdown.menu">
+                                <a href="#" class="dropdown-item">Datums voor periodes</a>
+                            </div>
+                        </li>
                     </ul>
                 </div>
             </div>
