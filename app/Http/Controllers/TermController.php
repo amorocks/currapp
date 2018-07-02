@@ -18,6 +18,14 @@ class TermController extends Controller
             ->with('terms', $cohort->terms);
     }
 
+    public function show(Qualification $qualification, Cohort $cohort, Term $term)
+    {
+        return view('curriculum.terms.show')
+            ->with(compact('qualification'))
+            ->with(compact('cohort'))
+            ->with(compact('term'));
+    }
+
     public function courses(Qualification $qualification, Cohort $cohort, Term $term)
     {
     	$courses = Course::whereDoesntHave('terms', function ($query) use($term) {
