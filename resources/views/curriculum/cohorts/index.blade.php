@@ -7,8 +7,9 @@
 
 @section('content')
 	
-<div class="breadcrumbs">
+<div class="breadcrumbs d-flex justify-content-between">
 	<small>Kwalificaties &gt; {{ $qualification->title }} &gt; cohorten</small>
+	<small>Volg dit cohort:</small>
 </div>
 <ul class="list-unstyled">
 	@foreach($cohorts as $cohort)
@@ -17,6 +18,9 @@
 				<h2>{{ $cohort->title }}</h2>
 				<p>{{ $qualification->title }}</p>
 			</a>
+			<div data-controller="subscribe" data-id="{{ $cohort->id }}">
+				<i data-action="click->subscribe#toggle" class="{{ $cohort->is_subscribed ? 'fas' : 'far' }} fa-fw fa-bookmark fa-lg"></i>
+			</div>
 		</li>
 	@endforeach
 </ul>

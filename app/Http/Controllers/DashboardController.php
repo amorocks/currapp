@@ -15,37 +15,35 @@ class DashboardController extends Controller
 
     	if($periodisation == null)
     	{
-    		return view('dashboard.simple')
+            return view('dashboard.simple')
     			->with('user', Auth::user());
     	}
 
-    	$schoolyear = $periodisation->schoolyear;
-    	$term_order = $periodisation->term_order;
-    	$qualifications = Auth::user()->qualifications;
+    	$cohorts = Auth::user()->cohorts;
 
-    	$now = array();
-    	foreach($qualifications as $q)
-    	{
-    		//Voor ieder jaar dat de kwalificatie duurt...
-    		for($i = 0; $i < $q->duration; $i++)
-    		{
-    			//...haal het cohort op wat bij het huidige jaar 1, 2 of 3 hoort
-    			$cohort = $q->cohorts()->where('start_year', $schoolyear-$i)->first();
+        $now = array();
+        foreach ($cohorts as $cohort)
+        {
+            //Example: it is now 17-18, looking at cohort 2015 - 2018, the sum will be: 2017 - 2015 + 1 = 3
+            $year = $periodisation->schoolyear - $cohort->start_year + 1;
+            if($year < 1) break;
 
-    			if($cohort != null)
-    			{
-	    			//zoek de periode die nu loopt in jaar 1, 2 of 3
-	    			$term = $cohort->terms()->where('order', ($term_order*($i+1)))->first();
-	    			if($term != null)
-	    			{
-	    				$now[$q->id][] = $term;
-	    			}
-	    		}
-    		}
-    	}
+            $order = $periodisation->term_order * $year;
+            $term = $cohort->terms()->where('order', $order)->first();
+            if($term != null)
+            {
+                $now[] = $term;
+            }
+        }
 
-    	return view('dashboard.extended')
-    		->with('user', Auth::user())
-    		->with('terms', $now);
+        if(empty($now))
+        {
+            return view('dashboard.simple')
+                ->with('user', Auth::user());
+        }
+
+        return view('dashboard.extended')
+            ->with('user', Auth::user())
+            ->with('terms', $now);
     }
 }

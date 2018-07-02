@@ -21,7 +21,7 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::group(['prefix' => 'curriculum'], function(){
 		Route::resource('qualifications', 'QualificationController', ['except' => ['show']]);
 		Route::resource('qualifications.cohorts', 'CohortController', ['only' => ['index', 'create', 'store', 'show']]);
-		Route::resource('qualifications.cohorts.terms', 'TermController', ['only' => ['index']]);
+		Route::resource('qualifications.cohorts.terms', 'TermController', ['only' => ['index', 'show']]);
 		Route::get('/qualifications/{qualification}/cohorts/{cohort}/topics', 'CohortController@edit_topics')->name('qualifications.cohorts.topics.edit');
 		Route::post('/qualifications/{qualification}/cohorts/{cohort}/topics', 'CohortController@update_topics')->name('qualifications.cohorts.topics.update');
 		Route::get('/qualifications/{qualification}/cohorts/{cohort}/terms/{term}/courses', 'TermController@courses')->name('qualifications.cohorts.terms.courses');
@@ -32,7 +32,7 @@ Route::group(['middleware' => 'auth'], function(){
 	});
 
 	//AJAX routes
-	Route::post('/subscription/toggle/{qualification}', 'SubscriptionController@toggle');
+	Route::post('/subscription/toggle/{cohort}', 'SubscriptionController@toggle');
 	Route::post('/curriculum/toggle/term/{term}/course/{course}', 'TermController@toggle_course');
 
 });

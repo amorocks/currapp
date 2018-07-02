@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateQualificationUserTable extends Migration
+class CreateCohortUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateQualificationUserTable extends Migration
      */
     public function up()
     {
-        Schema::create('qualification_user', function (Blueprint $table) {
-            $table->integer('qualification_id')->unsigned();
+        Schema::create('cohort_user', function (Blueprint $table) {
+            $table->integer('cohort_id')->unsigned();
             $table->string('user_id');
 
-            $table->foreign('qualification_id')
-                    ->references('id')->on('qualifications')
+            $table->foreign('cohort_id')
+                    ->references('id')->on('cohorts')
                     ->onDelete('cascade');
 
             $table->foreign('user_id')

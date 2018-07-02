@@ -1,25 +1,18 @@
 @extends('layouts.app')
 @section('content')
 
-
-@foreach($user->qualifications as $q)
-	@if(array_key_exists($q->id, $terms))
-		<h2 class="mt-4">{{ $q->title }}</h2>
-		<ul>
-			
-			@foreach($terms[$q->id] as $term)
-				<li>
-					<a href="{{ route('qualifications.cohorts.show', [$q, $term->cohort]) }}">{{ $term->title }}</a>
-					<ul>
-						@foreach($term->courses as $course)
-							<li>{{ $course->title }}</li>
-						@endforeach
-					</ul>
-				</li>
-			@endforeach
-			
-		</ul>
-	@endif
+<h2 class="mt-4">Mijn opleidingen</h2>
+@foreach($terms as $term)
+	<h4 class="mt-4 mb-0">
+		<a href="{{ route('qualifications.cohorts.terms.show', [$term->cohort->qualification, $term->cohort, $term]) }}">
+			{{ $term->cohort->qualification->title }} {{ $term->title }}
+		</a>
+	</h4>
+	<ul>
+		@foreach($term->courses as $course)
+			<li>{{ $course->title }}</li>
+		@endforeach
+	</ul>
 @endforeach
 
 @endsection
