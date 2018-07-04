@@ -23,8 +23,6 @@ Route::group(['middleware' => 'auth'], function(){
 		Route::resource('qualifications.cohorts', 'CohortController', ['only' => ['index', 'create', 'store', 'show']]);
 		Route::resource('qualifications.cohorts.assets', 'CohortAssetController', ['only' => ['index', 'show']]);
 		Route::resource('qualifications.cohorts.terms', 'TermController', ['only' => ['index', 'show']]);
-		Route::get('/qualifications/{qualification}/cohorts/{cohort}/topics', 'CohortController@edit_topics')->name('qualifications.cohorts.topics.edit');
-		Route::post('/qualifications/{qualification}/cohorts/{cohort}/topics', 'CohortController@update_topics')->name('qualifications.cohorts.topics.update');
 		Route::get('/qualifications/{qualification}/cohorts/{cohort}/terms/{term}/courses', 'TermController@courses')->name('qualifications.cohorts.terms.courses');
 	});
 

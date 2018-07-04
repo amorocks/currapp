@@ -20,9 +20,6 @@
                 </li>
             </ul>
         </div>
-        <div class="btn-group">
-            <a href="{{ route('qualifications.cohorts.topics.edit', [$qualification, $cohort]) }}" class="btn btn-outline-light"><i class="fas fa-pen"></i> Leerlijnen aanpassen</a>
-        </div>
 	</nav>
 @endsection
 
