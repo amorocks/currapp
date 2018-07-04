@@ -2,7 +2,6 @@
 
 @section('buttons')
 	<a href="{{ route('qualifications.cohorts.index', $qualification) }}" class="btn btn-outline-gray"><i class="fas fa-chevron-up"></i> Omhoog</a>
-	<a href="#" class="btn btn-outline-gray"><i class="fas fa-plus"></i> Nieuwe periode</a>
 @endsection
 
 @section('subnav')
