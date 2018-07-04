@@ -21,7 +21,7 @@
             </ul>
         </div>
         <div class="btn-group">
-            <a href="{{ route('assets.create', ['link', 'cohort', $cohort]) }}" class="btn btn-outline-light"><i class="fas fa-plus"></i> Nieuw bestand</a>
+            <a href="{{ route('assets.create', ['file', 'cohort', $cohort]) }}" class="btn btn-outline-light"><i class="fas fa-plus"></i> Nieuw bestand</a>
         </div>
 	</nav>
 @endsection

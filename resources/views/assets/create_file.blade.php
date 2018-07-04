@@ -8,7 +8,7 @@
 
 @section('content')
     
-    <form method="POST" action="{{ route('assets.store', ['link', $assetable_type, $assetable_id]) }}">
+    <form method="POST" action="{{ route('assets.store', ['file', $assetable_type, $assetable_id]) }}" enctype="multipart/form-data">
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Titel</label>
             <div class="col-sm-10">
@@ -16,9 +16,9 @@
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Link</label>
+            <label class="col-sm-2 col-form-label">Bestand</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" required name="link" placeholder="http://www.google.com/" value="{{ old('link') }}">
+                <input type="file" class="form-control-file" required name="file">
             </div>
         </div>
         <div class="form-group row">
