@@ -29,6 +29,11 @@ class Cohort extends Model
         return $this->belongsToMany('App\User');
     }
 
+    public function assets()
+    {
+        return $this->morphMany('App\Asset', 'assetable');
+    }
+
     public function getTitleAttribute($nospaces = false, $separator = '-')
     {
         $title = $this->start_year;
