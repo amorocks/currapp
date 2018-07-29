@@ -10764,6 +10764,34 @@ a.text-gray:focus {
   font-family: sans-serif;
 }
 
+.dashboard-item {
+  border: 1px solid #C2C7CC;
+  border-radius: .25rem;
+  margin: 3rem 0;
+  padding: 1rem;
+}
+
+@media (min-width: 768px) {
+  .dashboard-item .content {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+
+  .dashboard-item .content > div {
+    width: 50%;
+  }
+
+  .dashboard-item .content > div:nth-child(1) {
+    padding-right: 1rem;
+  }
+
+  .dashboard-item .content > div:nth-child(2) {
+    padding-left: 1rem;
+    border-left: 1px solid #C2C7CC;
+  }
+}
+
 .container,
 .container-fluid {
   margin-top: 2rem;
@@ -10783,5 +10811,10 @@ table label {
 
 a:not([href]) {
   cursor: pointer;
+}
+
+p > a,
+.underline {
+  text-decoration: underline;
 }
 

@@ -19,21 +19,19 @@ class DashboardController extends Controller
     			->with('user', Auth::user());
     	}
 
-    	$cohorts = Auth::user()->cohorts;
+    	$cohorts = Auth::user()->cohorts()->orderBy('qualification_id')->get();
 
         $now = array();
         foreach ($cohorts as $cohort)
         {
-            //Example: it is now 17-18, looking at cohort 2015 - 2018, the sum will be: 2017 - 2015 + 1 = 3
+            //Example: it is now 17-18, looking at cohort 2015 - 2018, the sum will be:
+            //      2017                       - 2015                + 1 = 3
             $year = $periodisation->schoolyear - $cohort->start_year + 1;
             if($year < 1) break;
 
             $order = $periodisation->term_order * $year;
             $term = $cohort->terms()->where('order', $order)->first();
-            if($term != null)
-            {
-                $now[] = $term;
-            }
+            if($term != null) $now[] = $term;
         }
 
         if(empty($now))
