@@ -10624,7 +10624,8 @@ a.text-gray:focus {
           flex-direction: row;
 }
 
-.subnav h2 {
+.subnav h2,
+.subnav p {
   line-height: inherit;
   margin: .5rem 0;
   padding: 4px 0;
@@ -10790,6 +10791,41 @@ a.text-gray:focus {
     padding-left: 1rem;
     border-left: 1px solid #C2C7CC;
   }
+}
+
+.term-grid {
+  display: grid;
+  /*
+		this will make sure you see exactly the 8 weeks on screen
+		the rows are:
+			60px for lesson-type-titles
+			8 times: 1 week = (100vh-navbars-gap / 8)
+	*/
+  grid-template-columns: 60px;
+  /* explicit for first column, rest is auto */
+  grid-auto-columns: 1fr;
+  /* all auto-columns will be same width */
+  grid-template-rows: calc(100vh - 132px - 2rem);
+  grid-auto-flow: column;
+  grid-column-gap: 10px;
+}
+
+.term-grid .term-column {
+  display: grid;
+  grid-template-rows: 60px repeat(8, 1fr);
+  grid-auto-flow: column;
+}
+
+.term-grid .week-number {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .container,

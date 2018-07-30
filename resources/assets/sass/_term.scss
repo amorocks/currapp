@@ -1,0 +1,27 @@
+.term-grid{
+	display: grid;
+	/*
+		this will make sure you see exactly the 8 weeks on screen
+		the rows are:
+			60px for lesson-type-titles
+			8 times: 1 week = (100vh-navbars-gap / 8)
+	*/
+	grid-template-columns: 60px; /* explicit for first column, rest is auto */
+	grid-auto-columns: 1fr; /* all auto-columns will be same width */
+	grid-template-rows: calc(100vh - 132px - 2rem);
+	grid-auto-flow: column;
+	grid-column-gap: 10px;
+
+	.term-column{
+		display: grid;
+		grid-template-rows: 60px repeat(8, 1fr);
+		grid-auto-flow: column;
+	}
+
+	.week-number{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	
+}
