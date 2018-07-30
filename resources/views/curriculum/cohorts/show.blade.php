@@ -48,7 +48,9 @@
             <div class="term" style="
                 grid-template-columns: 45px repeat({{ $cohort->topics->count() ?: 1  }}, 1fr) 30px;
                 ">
-                <div class="number">{{ $term->title }}</div>
+                <div class="number">
+                    <a href="{{ route('qualifications.cohorts.terms.show', [$qualification, $cohort, $term]) }}">{{ $term->title }}</a>
+                </div>
                 @foreach($term->courses as $course)
                     <div class="course" style="
                         grid-column: {{ $topic_numbers[$course->topic->id] }}
