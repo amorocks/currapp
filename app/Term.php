@@ -15,7 +15,7 @@ class Term extends Model
 
     public function courses()
     {
-        return $this->belongsToMany('App\Course', 'schedules')->using('App\Schedule');
+        return $this->belongsToMany('App\Course', 'schedules')->using('App\Schedule')->withTimestamps();
     }
 
     public function getTitleAttribute()

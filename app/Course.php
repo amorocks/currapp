@@ -16,6 +16,6 @@ class Course extends Model
 
     public function terms()
     {
-        return $this->belongsToMany('App\Term', 'schedules')->using('App\Schedule');
+        return $this->belongsToMany('App\Term', 'schedules')->using('App\Schedule')->withTimestamps();
     }
 }
