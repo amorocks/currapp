@@ -24,12 +24,35 @@ class DashboardController extends Controller
         $now = array();
         foreach ($cohorts as $cohort)
         {
-            //Example: it is now 17-18, looking at cohort 2015 - 2018, the sum will be:
-            //      2017                       - 2015                + 1 = 3
-            $year = $periodisation->schoolyear - $cohort->start_year + 1;
-            if($year < 1) break;
+            /*
 
-            $order = $periodisation->term_order * $year;
+            Full example of calculations below:
+        
+                1 + (0 * 4) = 1
+                2 + (0 * 4) = 2
+                3 + (0 * 4) = 3
+                4 + (0 * 4) = 4
+
+                1 + (1 * 4) = 5
+                2 + (1 * 4) = 6
+                3 + (1 * 4) = 7
+                4 + (1 * 4) = 8
+
+                1 + (2 * 4) = 9
+                2 + (2 * 4) = 10
+                3 + (2 * 4) = 11
+                4 + (2 * 4) = 12
+
+            In other words:
+
+                order_1-12 = order_1-4 + ((year-1) * 4)
+
+            */
+
+            $year = $periodisation->schoolyear - $cohort->start_year;
+            if($year < 0) break;
+
+            $order = $periodisation->term_order + $year*4;
             $term = $cohort->terms()->where('order', $order)->first();
             if($term != null) $now[] = $term;
         }
