@@ -15,9 +15,6 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="{{ route('qualifications.cohorts.assets.index', [$qualification, $cohort]) }}">Bestanden</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('qualifications.cohorts.terms.index', [$qualification, $cohort]) }}">Periodes</a>
-                </li>
             </ul>
         </div>
         <div class="btn-group">

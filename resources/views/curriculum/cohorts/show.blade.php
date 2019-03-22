@@ -15,9 +15,6 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('qualifications.cohorts.assets.index', [$qualification, $cohort]) }}">Bestanden</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('qualifications.cohorts.terms.index', [$qualification, $cohort]) }}">Periodes</a>
-                </li>
             </ul>
         </div>
 	</nav>
@@ -50,7 +47,7 @@
                 grid-template-columns: 45px repeat({{ count($types) ?: 1  }}, 1fr) 30px;
                 ">
                 <div class="number">
-                    <a href="{{ route('qualifications.cohorts.terms.show', [$qualification, $cohort, $term]) }}">{{ $term->title }}</a>
+                    {{ $term->title }}
                 </div>
                 @foreach($term->courses as $course)
                     <div class="course" style="

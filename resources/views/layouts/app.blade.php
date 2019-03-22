@@ -31,10 +31,14 @@
                         <li class="nav-item @if(starts_with(Route::current()->uri, 'curriculum')) active @endif">
                             <a class="nav-link" href="{{ route('qualifications.index') }}">Cohorten</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="">Rapportages</a>
+                        </li>
                         
                         <li class="nav-item dropdown" data-controller="dropdown">
                             <a class="nav-link dropdown-toggle" data-target="dropdown.button" data-action="click->dropdown#toggle click@window->dropdown#hide" aria-expanded="false">Overige</a>
                             <div class="dropdown-menu" data-target="dropdown.menu">
+                                <a href="" class="dropdown-item">Tags</a>
                                 <a href="{{ route('types.index') }}" class="dropdown-item">Soorten vakken</a>
                                 <a href="{{ route('periodisations.index') }}" class="dropdown-item">Datums voor periodes</a>
                             </div>
