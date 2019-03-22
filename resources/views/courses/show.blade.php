@@ -7,9 +7,20 @@
 
 @section('content')
 
+<div class="course">
 	<h2>{{ $course->title }}</h2>
-	<p class="mt-4 mb-0"><i class="far fa-fw fa-user"></i> Vakeigenaar: {{ $course->owner }}</p>
-	<p class="mt-0 mb-3"><i class="far fa-fw fa-folder"></i> Leerlijn: {{ $course->topic->title }}</p>
+	<table class="table table-borderless table-sm mt-4">
+		<tr>
+			<td><i class="far fa-fw fa-user"></i></td>
+			<td>Vakeigenaar:</td>
+			<td>{{ $course->owner }}</td>
+		</tr>
+		<tr>
+			<td><i class="far fa-fw fa-folder"></i></td>
+			<td>Type:</td>
+			<td>{{ $course->type }}</td>
+		</tr>
+	</table>
 	
 	<h3>Planningen</h3>
 	<ul>
@@ -17,4 +28,5 @@
 			<li>{{ $term->cohort->qualification->title }} {{ $term->cohort->title }}, {{ $term->title }}</li>
 		@endforeach
 	</ul>
+</div>
 @endsection

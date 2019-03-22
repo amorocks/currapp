@@ -10765,6 +10765,14 @@ a.text-gray:focus {
   font-family: sans-serif;
 }
 
+.course table {
+  width: auto;
+}
+
+.course td:first-child {
+  padding-left: 0;
+}
+
 .dashboard-item {
   border: 1px solid #C2C7CC;
   border-radius: .25rem;
