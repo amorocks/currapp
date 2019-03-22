@@ -18,6 +18,7 @@ class CreateCoursesTable extends Migration
             $table->integer('type_id')->unsigned();
             $table->string('title');
             $table->string('owner');
+            $table->text('description')->nullable();
             $table->timestamps();
 
             $table->foreign('type_id')

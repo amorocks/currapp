@@ -12,9 +12,6 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('qualifications.cohorts.show', [$qualification, $cohort]) }}">Overzicht</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('qualifications.cohorts.terms.index', [$qualification, $cohort]) }}">Periodes</a>
-                </li>
             </ul>
         </div>
 	</nav>

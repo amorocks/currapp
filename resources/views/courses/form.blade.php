@@ -1,5 +1,10 @@
 @extends('layouts.app')
 
+@push('head')
+    <link rel="stylesheet" type="text/css" href="/trix/trix.css">
+    <script type="text/javascript" src="/trix/trix.js"></script>
+@endpush
+
 @section('buttons')
     <a class="btn btn-outline-gray" href="{{ URL::previous() }}">
         <i class="fas fa-times" aria-hidden="true"></i> <span>Annuleren</span>
@@ -22,12 +27,12 @@
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Leerlijn</label>
+            <label class="col-sm-2 col-form-label">Vaksoort</label>
             <div class="col-sm-10">
-                <select class="form-control" name="topic_id" id="topic_id">
+                <select class="form-control" name="type_id" id="type_id">
                     <option value="0">- kies -</option>
-                    @foreach($topics as $topic)
-                        <option value="{{ $topic->id }}" @if(old('topic_id', optional($course->topic)->id) == $topic->id) selected @endif>{{ $topic->title }}</option>
+                    @foreach($types as $type)
+                        <option value="{{ $type->id }}" @if(old('type_id', optional($course->type)->id) == $type->id) selected @endif>{{ $type->title }}</option>
                     @endforeach
                 </select>
             </div>
@@ -39,6 +44,15 @@
                 <small class="form-text text-muted">Vul een docent-code in, bijvoorbeeld ab01.</small>
             </div>
         </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Doel, relevantie en / of achterliggende gedachte van het vak</label>
+            <div class="col-sm-10 py-2">
+                <input type="hidden" name="description" id="description" value="{{ old('description', $course->description) }}">
+                <trix-editor input="description" class="trix-content"></trix-editor>
+            </div>
+        </div>
+
+        
         
         {{ csrf_field() }}
 

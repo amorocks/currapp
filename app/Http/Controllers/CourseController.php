@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Course;
-use App\Topic;
+use App\Type;
 use Illuminate\Http\Request;
 use Auth;
 
@@ -25,14 +25,14 @@ class CourseController extends Controller
     {
         return view('courses.form')
             ->with('course', new Course())
-            ->with('topics', Topic::all());
+            ->with('types', Type::all());
     }
 
     public function store(Request $request)
     {
         $this->validate(request(), [
             'title' => 'required|string',
-            'topic_id' => 'required|integer|min:1',
+            'type_id' => 'required|integer|min:1',
             'owner' => 'required|alpha_dash'
         ]);
 
@@ -50,20 +50,21 @@ class CourseController extends Controller
     {
         return view('courses.form')
             ->with(compact('course'))
-            ->with('topics', Topic::all());
+            ->with('types', Type::all());
     }
 
     public function update(Request $request, Course $course)
     {
         $this->validate(request(), [
             'title' => 'required|string',
-            'topic_id' => 'required|integer|min:1',
+            'type_id' => 'required|integer|min:1',
             'owner' => 'required|alpha_dash'
         ]);
 
         $course->title = $request->title;
-        $course->topic_id = $request->topic_id;
+        $course->type_id = $request->type_id;
         $course->owner = $request->owner;
+        $course->description = $request->description;
         $course->save();
 
         return redirect()->route('courses.show', $course);
