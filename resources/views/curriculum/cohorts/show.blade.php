@@ -17,6 +17,9 @@
                 </li>
             </ul>
         </div>
+        <div class="btn-group">
+            <a href="{{ route('qualifications.cohorts.terms.create', [$qualification, $cohort]) }}" class="btn btn-outline-light"><i class="fas fa-plus"></i> Nieuwe periode</a>
+        </div>
 	</nav>
 @endsection
 

@@ -10,20 +10,24 @@ use Illuminate\Http\Request;
 
 class TermController extends Controller
 {
-    public function index(Qualification $qualification, Cohort $cohort)
+    public function create(Qualification $qualification, Cohort $cohort)
     {
-        return view('curriculum.terms.index')
+        return view('curriculum.terms.create')
             ->with(compact('qualification'))
-            ->with(compact('cohort'))
-            ->with('terms', $cohort->terms);
+            ->with(compact('cohort'));
     }
 
-    public function show(Qualification $qualification, Cohort $cohort, Term $term)
+    public function store(Qualification $qualification, Cohort $cohort, Request $request)
     {
-        return view('curriculum.terms.show')
-            ->with(compact('qualification'))
-            ->with(compact('cohort'))
-            ->with(compact('term'));
+        $this->validate(request(), [
+            'order' => 'required|integer|min:1'
+        ]);
+
+        $term = new Term();
+        $term->order = $request->order;
+        $term = $cohort->terms()->save($term);
+
+        return redirect()->route('qualifications.cohorts.show', [$qualification, $cohort]);
     }
 
     public function courses(Qualification $qualification, Cohort $cohort, Term $term)
