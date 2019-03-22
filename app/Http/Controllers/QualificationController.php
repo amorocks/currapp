@@ -26,9 +26,7 @@ class QualificationController extends Controller
 
             'title' => 'required|alpha_dash',
             'crebo' => 'required|alpha_dash',
-            'owner' => 'required|alpha_dash',
-            'duration' => 'required|integer|min:1',
-            'terms_per_year' => 'required|integer|min:1'
+            'owner' => 'required|alpha_dash'
 
         ]);
 

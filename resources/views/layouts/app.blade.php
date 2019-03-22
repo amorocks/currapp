@@ -22,18 +22,20 @@
                         <li class="nav-item @if(Route::currentRouteName() == 'home') active @endif">
                             <a class="nav-link" href="{{ route('home') }}">Start</a>
                         </li>
-                        <li class="nav-item @if(starts_with(Route::current()->uri, 'curriculum')) active @endif">
-                            <a class="nav-link" href="{{ route('qualifications.index') }}">Curriculum</a>
-                        </li>
                         <li class="nav-item @if(starts_with(Route::current()->uri, 'courses')) active @endif">
                             <a class="nav-link" href="{{ route('courses.index') }}">Vakken</a>
                         </li>
-                        <li class="nav-item @if(starts_with(Route::current()->uri, 'topics')) active @endif">
-                            <a class="nav-link" href="{{ route('topics.index') }}">Leerlijnen</a>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('qualifications.index') }}">Dit jaar</a>
                         </li>
+                        <li class="nav-item @if(starts_with(Route::current()->uri, 'curriculum')) active @endif">
+                            <a class="nav-link" href="{{ route('qualifications.index') }}">Cohorten</a>
+                        </li>
+                        
                         <li class="nav-item dropdown" data-controller="dropdown">
                             <a class="nav-link dropdown-toggle" data-target="dropdown.button" data-action="click->dropdown#toggle click@window->dropdown#hide" aria-expanded="false">Overige</a>
                             <div class="dropdown-menu" data-target="dropdown.menu">
+                                <a href="{{ route('topics.index') }}" class="dropdown-item">Soorten vakken</a>
                                 <a href="{{ route('periodisations.index') }}" class="dropdown-item">Datums voor periodes</a>
                             </div>
                         </li>

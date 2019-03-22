@@ -41,7 +41,7 @@
 
         @foreach($terms as $term)
 
-            @if(!($loop->index % $qualification->terms_per_year))
+            @if(!($loop->index % $cohort->terms_per_year))
                 <div class="spacer"></div>
             @endif
 

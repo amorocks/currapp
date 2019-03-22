@@ -23,6 +23,18 @@
             </div>
         </div>
         <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Duur in jaren</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" required name="duration" value="{{ old('duration', 3) }}">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Periodes per jaar</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" required name="terms_per_year" value="{{ old('terms_per_year', 4) }}">
+            </div>
+        </div>
+        <div class="form-group row">
             <label class="col-sm-2 col-form-label">Periodes aanmaken</label>
             <div class="col-sm-10">
                 <input type="checkbox" name="create_terms" value="yes" checked>

@@ -18,6 +18,7 @@ class CreateCohortsTable extends Migration
             $table->integer('qualification_id')->unsigned();
             $table->integer('start_year');
             $table->integer('exam_year');
+            $table->integer('terms_per_year');
             $table->timestamps();
 
             $table->foreign('qualification_id')

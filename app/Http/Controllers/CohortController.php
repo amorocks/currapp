@@ -29,16 +29,19 @@ class CohortController extends Controller
     {
         $this->validate(request(), [
             'start_year' => 'required|integer',
+            'duration' => 'required|integer|min:1',
+            'terms_per_year' => 'required|integer|min:1'
         ]);
 
         $cohort = new Cohort();
         $cohort->start_year = $request->start_year;
-        $cohort->exam_year = $cohort->start_year + $qualification->duration;
+        $cohort->exam_year = $cohort->start_year + $request->duration;
+        $cohort->terms_per_year = $request->terms_per_year;
         $cohort = $qualification->cohorts()->save($cohort);
 
         if($request->create_terms == 'yes')
         {
-            $terms = $qualification->duration * $qualification->terms_per_year;
+            $terms = $request->duration * $request->terms_per_year;
             for($i = 1; $i <= $terms; $i++)
             {
                 $cohort->terms()->save(new Term([

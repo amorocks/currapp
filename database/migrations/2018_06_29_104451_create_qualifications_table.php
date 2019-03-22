@@ -19,8 +19,6 @@ class CreateQualificationsTable extends Migration
             $table->string('owner');
             $table->string('title');
             $table->string('sub_title')->nullable();
-            $table->integer('duration');
-            $table->integer('terms_per_year');
             $table->timestamps();
         });
     }

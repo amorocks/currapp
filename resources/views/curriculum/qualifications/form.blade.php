@@ -45,26 +45,6 @@
                 <small class="form-text text-muted">Vul een docent-code in, bijvoorbeeld ab01.</small>
             </div>
         </div>
-        <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Duur in jaren</label>
-            <div class="col-sm-10">
-                @if($qualification->exists)
-                    <input type="text" readonly class="form-control-plaintext" name="duration" value="{{ $qualification->duration }}">
-                @else
-                    <input type="text" class="form-control" required name="duration" value="3">
-                @endif
-            </div>
-        </div>
-        <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Periodes per jaar</label>
-            <div class="col-sm-10">
-                @if($qualification->exists)
-                    <input type="text" readonly class="form-control-plaintext" name="terms_per_year" value="{{ $qualification->terms_per_year }}">
-                @else
-                    <input type="text" class="form-control" required name="terms_per_year" value="4">
-                @endif
-            </div>
-        </div>
 
         {{ csrf_field() }}
 
