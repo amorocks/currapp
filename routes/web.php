@@ -15,7 +15,6 @@
 Route::group(['middleware' => 'auth'], function(){
 
 	Route::get('/', 'DashboardController@show')->name('home');
-	Route::resource('topics', 'TopicController');
 	Route::resource('courses', 'CourseController');
 
 	Route::group(['prefix' => 'curriculum'], function(){
@@ -27,7 +26,8 @@ Route::group(['middleware' => 'auth'], function(){
 	});
 
 	Route::group(['prefix' => 'settings'], function(){
-		Route::resource('periodisations', 'PeriodisationController', ['excpet' => 'show']);
+		Route::resource('types', 'TypeController', ['except' => 'show']);
+		Route::resource('periodisations', 'PeriodisationController', ['except' => 'show']);
 	});
 
 	Route::get('/assets/{asset}', 'AssetController@show')->name('assets.show');

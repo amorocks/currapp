@@ -9,9 +9,9 @@
 @section('content')
   
   <h2>Weet je het zeker?</h2>
-  <p>Je staat op het punt de leerlijn <strong>{{ $topic->title }}</strong> te verwijderen. Onderliggende vakken zijn hierna niet meer vindbaar!</p>
+  <p>Je staat op het punt de vaksoort <strong>{{ $type->title }}</strong> te verwijderen. Dit kan grote gevolgen hebben, als er nog vakken zijn die deze soort gebruiken!</p>
   
-  <form method="POST" action="{{ route('topics.destroy', $topic) }}">
+  <form method="POST" action="{{ route('types.destroy', $type) }}">
     @method('DELETE')
     @csrf
     <button type="submit" class="btn btn-danger">

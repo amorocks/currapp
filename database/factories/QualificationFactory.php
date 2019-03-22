@@ -18,8 +18,6 @@ $factory->define(App\Qualification::class, function (Faker $faker) {
     	'crebo' => $faker->randomNumber(5),
     	'owner' => $faker->bothify('??##'),
         'title' => strtoupper($faker->word()),
-        'sub_title' => $faker->text(20),
-        'duration' => $faker->numberBetween(1, 3),
-        'terms_per_year' => $faker->numberBetween(2, 4)
+        'sub_title' => $faker->text(20)
     ];
 });

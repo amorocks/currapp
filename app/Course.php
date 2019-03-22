@@ -9,9 +9,9 @@ class Course extends Model
 {
 	protected $guarded = [];
 
-    public function topic()
+    public function type()
     {
-    	return $this->belongsTo('App\Topic');
+    	return $this->belongsTo('App\Type');
     }
 
     public function terms()

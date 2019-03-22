@@ -15,13 +15,13 @@ class CreateCoursesTable extends Migration
     {
         Schema::create('courses', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('topic_id')->unsigned();
+            $table->integer('type_id')->unsigned();
             $table->string('title');
             $table->string('owner');
             $table->timestamps();
 
-            $table->foreign('topic_id')
-                    ->references('id')->on('topics')
+            $table->foreign('type_id')
+                    ->references('id')->on('types')
                     ->onDelete('cascade');
         });
     }

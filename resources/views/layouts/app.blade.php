@@ -35,7 +35,7 @@
                         <li class="nav-item dropdown" data-controller="dropdown">
                             <a class="nav-link dropdown-toggle" data-target="dropdown.button" data-action="click->dropdown#toggle click@window->dropdown#hide" aria-expanded="false">Overige</a>
                             <div class="dropdown-menu" data-target="dropdown.menu">
-                                <a href="{{ route('topics.index') }}" class="dropdown-item">Soorten vakken</a>
+                                <a href="{{ route('types.index') }}" class="dropdown-item">Soorten vakken</a>
                                 <a href="{{ route('periodisations.index') }}" class="dropdown-item">Datums voor periodes</a>
                             </div>
                         </li>

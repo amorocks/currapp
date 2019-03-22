@@ -30,33 +30,34 @@
 	<div class="curriculum">
         
         <div class="topics" style="
-            grid-template-columns: 45px repeat({{ $cohort->topics->count()  }}, 1fr) 30px;
+            grid-template-columns: 45px repeat({{ count($types)  }}, 1fr) 30px;
         ">
-            @foreach($topics as $topic)
+            @foreach($types as $key => $type)
                 <div class="topic" style="
-                    grid-column: {{ $topic_numbers[$topic->id] }}
-                ">{{ $topic->title }}</div>
+                    grid-column: {{ $loop->iteration+1 }}
+                ">{{ $type }}</div>
+                <?php $types[$key] = $loop->iteration+1 ?>
             @endforeach
         </div>
 
-        @foreach($terms as $term)
+        @foreach($cohort->terms as $term)
 
             @if(!($loop->index % $cohort->terms_per_year))
                 <div class="spacer"></div>
             @endif
 
             <div class="term" style="
-                grid-template-columns: 45px repeat({{ $cohort->topics->count() ?: 1  }}, 1fr) 30px;
+                grid-template-columns: 45px repeat({{ count($types) ?: 1  }}, 1fr) 30px;
                 ">
                 <div class="number">
                     <a href="{{ route('qualifications.cohorts.terms.show', [$qualification, $cohort, $term]) }}">{{ $term->title }}</a>
                 </div>
                 @foreach($term->courses as $course)
                     <div class="course" style="
-                        grid-column: {{ $topic_numbers[$course->topic->id] }}
+                        grid-column: {{ $types[$course->type->id] }}
                     ">{{ $course->title }}</div>
                 @endforeach
-                <a class="add-course" href="{{ route('qualifications.cohorts.terms.courses', [$qualification, $cohort, $term]) }}" style="grid-column: {{ ($cohort->topics->count() ?: 1)+2  }};"><i class="fas fa-pen"></i></a>
+                <a class="add-course" href="{{ route('qualifications.cohorts.terms.courses', [$qualification, $cohort, $term]) }}" style="grid-column: {{ (count($types) ?: 1)+2  }};"><i class="fas fa-pen"></i></a>
             </div>
         @endforeach 
     </div>

@@ -12,7 +12,7 @@
 			<a href="{{ route('courses.show', $course) }}">
 				<h2>{{ $course->title }}</h2>
 				<p>Coördinator: {{ $course->owner }}</p>
-				<p><small class="text-muted">{{ $course->topic->title }}</small></p>
+				<p><small class="text-muted">{{ $course->type->title }}</small></p>
 			</a>
 		</li>
 	@endforeach

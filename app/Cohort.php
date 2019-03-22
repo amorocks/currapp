@@ -19,11 +19,6 @@ class Cohort extends Model
         return $this->hasMany('App\Term');
     }
 
-    public function topics()
-    {
-        return $this->belongsToMany('App\Topic');
-    }
-
     public function users()
     {
         return $this->belongsToMany('App\User');

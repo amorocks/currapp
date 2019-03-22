@@ -42,12 +42,6 @@ class TermController extends Controller
     public function toggle_course(Term $term, Course $course)
     {
         $status = $term->courses()->toggle($course);
-
-        if(!$term->cohort->topics->pluck('id')->contains($course->topic_id))
-        {
-            $term->cohort->topics()->attach($course->topic_id);
-        }
-
         return count($status['attached']);
     }
 }
