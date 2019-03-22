@@ -15,10 +15,4 @@ class Qualification extends Model
         return $this->hasMany('App\Cohort');
     }
 
-    public function getIsSubscribedAttribute()
-    {
-        return $this->cohorts->filter(function ($value, $key){
-        	return $value->is_subscribed;
-        })->count();
-    }
 }

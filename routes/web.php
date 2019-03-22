@@ -35,7 +35,6 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::post('/assets/create/{type}/{assetable_type}/{assetable_id}', 'AssetController@store')->name('assets.store');
 
 	//AJAX routes
-	Route::post('/subscription/toggle/{cohort}', 'SubscriptionController@toggle');
 	Route::post('/curriculum/toggle/term/{term}/course/{course}', 'TermController@toggle_course');
 
 });

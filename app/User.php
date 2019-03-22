@@ -13,11 +13,6 @@ class User extends Authenticatable
 
     protected $hidden = ['password', 'remember_token'];
 
-    public function cohorts()
-    {
-        return $this->belongsToMany('App\Cohort');
-    }
-
     public function getFirstNameAttribute()
     {
         return explode(' ', $this->name)[0];

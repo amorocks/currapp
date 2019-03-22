@@ -17,13 +17,6 @@
 				<p class="crebo">#{{ $q->crebo }}</p>
 				<p>{{ $q->sub_title }}</p>
 			</a>
-			@if($q->is_subscribed)
-				<div>
-					<a href="{{ route('qualifications.cohorts.index', $q) }}">
-						<i class="fas fa-fw fa-bookmark fa-lg"></i>
-					</a>
-				</div>
-			@endif
 		</li>
 	@endforeach
 </ul>

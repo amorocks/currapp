@@ -2500,8 +2500,7 @@ function identifierForContextKey(key) {
 var map = {
 	"./courses_controller.js": 40,
 	"./dropdown_controller.js": 41,
-	"./filter_controller.js": 42,
-	"./subscribe_controller.js": 43
+	"./filter_controller.js": 42
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -2691,55 +2690,7 @@ _class.targets = ["query", "list"];
 /* harmony default export */ __webpack_exports__["default"] = (_class);
 
 /***/ }),
-/* 43 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_stimulus__ = __webpack_require__(1);
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-
-
-var _class = function (_Controller) {
-	_inherits(_class, _Controller);
-
-	function _class() {
-		_classCallCheck(this, _class);
-
-		return _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).apply(this, arguments));
-	}
-
-	_createClass(_class, [{
-		key: "toggle",
-		value: function toggle() {
-			var el = this.element;
-			var icon = el.getElementsByTagName("i")[0];
-
-			icon.className = "fas fa-fw fa-spinner fa-spin fa-lg";
-
-			axios.post('/subscription/toggle/' + el.dataset.id).then(function (response) {
-
-				var style = response.data ? "fas" : "far";
-				icon.className = style + " fa-fw fa-bookmark fa-lg";
-			}).catch(function (error) {
-				console.log(error);
-			});
-		}
-	}]);
-
-	return _class;
-}(__WEBPACK_IMPORTED_MODULE_0_stimulus__["b" /* Controller */]);
-
-/* harmony default export */ __webpack_exports__["default"] = (_class);
-
-/***/ }),
+/* 43 */,
 /* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 

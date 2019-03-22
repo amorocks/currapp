@@ -19,11 +19,6 @@ class Cohort extends Model
         return $this->hasMany('App\Term');
     }
 
-    public function users()
-    {
-        return $this->belongsToMany('App\User');
-    }
-
     public function assets()
     {
         return $this->morphMany('App\Asset', 'assetable');
@@ -36,13 +31,5 @@ class Cohort extends Model
         $title .= $this->exam_year;
 
         return $title;
-    }
-
-    public function getIsSubscribedAttribute()
-    {
-        return $this->whereHas('users', function ($query) {
-            $query->where('user_id', Auth::user()->id);
-            $query->where('cohort_id', $this->id);
-        })->count();
     }
 }

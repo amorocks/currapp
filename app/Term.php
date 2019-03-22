@@ -25,7 +25,7 @@ class Term extends Model
 
 	public function getYearAttribute()
 	{
-		return ceil($this->order / $this->cohort->qualification->terms_per_year);
+		return ceil($this->order / $this->cohort->terms_per_year);
 	}
 
 	public function getOrderInYearAttribute()
