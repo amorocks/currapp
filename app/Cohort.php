@@ -32,4 +32,9 @@ class Cohort extends Model
 
         return $title;
     }
+
+    public function getShortTitleAttribute()
+    {
+        return 'C' . substr($this->start_year, 2, 2);
+    }
 }

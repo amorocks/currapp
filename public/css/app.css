@@ -10859,6 +10859,6 @@ a:not([href]) {
 
 p > a,
 .underline {
-  text-decoration: underline;
+  text-decoration: underline !important;
 }
 

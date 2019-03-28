@@ -16,6 +16,6 @@ class Course extends Model
 
     public function terms()
     {
-        return $this->belongsToMany('App\Term', 'schedules')->using('App\Schedule')->withTimestamps();
+        return $this->belongsToMany('App\Term', 'editions')->using('App\Edition')->withPivot('id', 'classes_per_week', 'hours_per_class', 'review');
     }
 }

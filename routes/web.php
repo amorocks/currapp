@@ -16,6 +16,7 @@ Route::group(['middleware' => 'auth'], function(){
 
 	Route::get('/', 'DashboardController@show')->name('home');
 	Route::resource('courses', 'CourseController');
+	Route::patch('editions/{edition}', 'EditionController@update')->name('editions.update');
 
 	Route::group(['prefix' => 'curriculum'], function(){
 		Route::resource('qualifications', 'QualificationController', ['except' => ['show']]);
