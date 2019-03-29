@@ -16,7 +16,7 @@ class Cohort extends Model
 
     public function terms()
     {
-        return $this->hasMany('App\Term');
+        return $this->hasMany('App\Term')->orderBy('order');
     }
 
     public function assets()
