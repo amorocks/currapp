@@ -52,7 +52,7 @@ class QualificationController extends Controller
         $qualification->owner = $request->owner;
         $qualification->save();
 
-        return redirect()->route('qualifications.show', $qualification);
+        return redirect()->route('qualifications.cohorts.index', $qualification);
     }
 
     public function delete(Qualification $qualification)
