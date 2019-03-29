@@ -39,3 +39,9 @@ a:not([href]){
 p > a, .underline{
 	text-decoration: underline !important;
 }
+
+.list-group-icons a{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}

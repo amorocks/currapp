@@ -13,9 +13,7 @@ class CourseController extends Controller
     public function index()
     {
         //Sort with own courses first
-        $courses = Course::all()->sortByDesc(function($course, $key){
-            return (int)($course->owner == Auth::user()->id);
-        })->values();
+        $courses = Course::allWithMineOnTop();
 
         return view('courses.index')
             ->with(compact('courses'));
