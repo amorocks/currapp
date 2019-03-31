@@ -26,8 +26,8 @@
                         <li class="nav-item @if(starts_with(Route::current()->uri, 'courses')) active @endif">
                             <a class="nav-link" href="{{ route('courses.index') }}">Vakken</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('qualifications.index') }}">Dit jaar</a>
+                        <li class="nav-item @if(starts_with(Route::current()->uri, 'now')) active @endif">
+                            <a class="nav-link" href="{{ route('now.index') }}">Dit jaar</a>
                         </li>
                         <li class="nav-item @if(starts_with(Route::current()->uri, 'curriculum')) active @endif">
                             <a class="nav-link" href="{{ route('qualifications.index') }}">Cohorten</a>

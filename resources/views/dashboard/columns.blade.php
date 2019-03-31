@@ -13,7 +13,7 @@
 			@endforeach
 		</ul>
 	</div>
-	<div class="card">
+	<div class="card text-muted">
 		<h3 class="card-title p-4 m-0">Mijn taken</h3>
 		<ul class="list-group list-group-flush list-group-icons">
 			<!-- foreach -->
