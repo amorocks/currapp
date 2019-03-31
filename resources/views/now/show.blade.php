@@ -12,6 +12,9 @@
 	             @endfor
             </ul>
         </div>
+        <div class="btn-group">
+            <a href="{{ route('now.show.hours', [$qualification, $schoolyear]) }}" class="btn btn-outline-light"><i class="far fa-clock"></i> Bekijk uren</a>
+        </div>
 	</nav>
 @endsection
 

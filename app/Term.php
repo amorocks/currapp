@@ -15,7 +15,7 @@ class Term extends Model
 
     public function courses()
     {
-        return $this->belongsToMany('App\Course', 'editions')->using('App\Edition')->withPivot('id');
+        return $this->belongsToMany('App\Course', 'editions')->using('App\Edition')->withPivot('id', 'classes_per_week', 'hours_per_class', 'review');
     }
 
     public function getTitleAttribute()

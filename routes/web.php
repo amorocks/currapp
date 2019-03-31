@@ -30,6 +30,7 @@ Route::group(['middleware' => 'auth'], function(){
 		Route::get('qualifications', 'NowController@index')->name('now.index');
 		Route::get('qualifications/{qualification}', 'NowController@show')->name('now.show');
 		Route::get('qualifications/{qualification}/{schoolyear}', 'NowController@show_year')->name('now.show.schoolyear');
+		Route::get('qualifications/{qualification}/{schoolyear}/hours', 'NowController@show_hours')->name('now.show.hours');
 	});
 
 	Route::group(['prefix' => 'settings'], function(){

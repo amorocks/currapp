@@ -32,4 +32,18 @@ class NowController extends Controller
             ->with(compact('schoolyear'))
             ->with(compact('cohorts'));
     }
+
+    public function show_hours(Qualification $qualification, $schoolyear)
+    {
+        $cohorts =  $qualification->cohorts()
+            ->where('start_year', '<=', $schoolyear)
+            ->where('exam_year', '>', $schoolyear)
+            ->orderBy('start_year', 'desc')
+            ->get();
+         
+        return view('now.hours')
+            ->with(compact('qualification'))
+            ->with(compact('schoolyear'))
+            ->with(compact('cohorts'));
+    }
 }

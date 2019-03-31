@@ -5,16 +5,16 @@ $theme-colors: (
  	"secondary":  #6088AF,
   	"light":      #F2F9FF,
   	"dark":       #283949,
-  	"gray": 	  #C2C7CC
+  	"gray": 	  #C7DAEB
 );
 
 $grays: (
 	"100": #FCFEFF,
 	"200": map-get($theme-colors, "light"),
-	"300": #DAE0E5,
-	"400": #C2C7CC,
-	"500": #AAAEB2,
-	"600": #919599,
+	"300": #C7DAEB,
+	"400": #AEC1D1,
+	"500": #8FA5B8,
+	"600": #9EACB8,
 	"700": #797D7F,
 	"800": #616466,
 	"900": #494B4C,
