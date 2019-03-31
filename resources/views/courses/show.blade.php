@@ -20,12 +20,12 @@
 	</div>
 	
 
-	@foreach($course->terms as $term)
+	@foreach($terms as $term)
 	<div data-controller="modal">
 
 		<!-- card -->
-		<div class="card my-4">
-			<h4 class="card-header">Editie {{ $term->full_title }}</h4>
+		<div class="card my-4 @if(optional($edition)->id == $term->pivot->id) border-secondary mb-5 @endif">
+			<h4 class="card-header @if(optional($edition)->id == $term->pivot->id) bg-secondary text-white @endif">Editie {{ $term->full_title }}</h4>
 			<div class="card-body">
 				<p class="card-text">
 					<i class="far fa-fw fa-clock"></i>

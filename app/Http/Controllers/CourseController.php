@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Course;
 use App\Type;
+use App\Edition;
+use App\Term;
 use Illuminate\Http\Request;
 use Auth;
 
@@ -40,8 +42,23 @@ class CourseController extends Controller
 
     public function show(Course $course)
     {
+        $terms = $course->terms;
         return view('courses.show')
-            ->with(compact('course'));
+            ->with(compact('terms'))
+            ->with(compact('course'))
+            ->with('edition', null);
+    }
+
+    public function show_edition(Course $course, Edition $edition)
+    {
+        $terms = $course->terms->sortByDesc(function($term, $key) use ($edition){
+            return (int)($term->pivot->id == $edition->id);
+        })->values();
+
+        return view('courses.show')
+            ->with(compact('course'))
+            ->with(compact('terms'))
+            ->with(compact('edition'));
     }
 
     public function edit(Course $course)

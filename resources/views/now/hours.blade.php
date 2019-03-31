@@ -77,7 +77,7 @@
                             $totals_horizontal[$year_in_study] += $hours * 8; //for 8 weeks
                             ?>
 
-                    		<a href="{{ route('courses.show', $course) }}" target="_blank">
+                    		<a href="{{ route('courses.show.edition', [$course, $course->pivot]) }}" target="_blank">
                                 {{ $course->type->title }} {{ $course->title }} (<em>{{ $hours  }}</em>)
                             </a><br />
                     	@endforeach

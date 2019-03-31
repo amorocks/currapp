@@ -56,7 +56,9 @@
                         grid-column: {{ $term->order - ($year_in_study-1)*$cohort->terms_per_year + 1 }}
                     ">
                     	@foreach($term->courses->sortBy('type_id') as $course)
-                    		<a href="{{ route('courses.show', $course) }}" target="_blank">{{ $course->type->title }} {{ $course->title }}</a><br />
+                    		<a href="{{ route('courses.show.edition', [$course, $course->pivot]) }}" target="_blank">
+                                {{ $course->type->title }} {{ $course->title }}
+                            </a><br />
                     	@endforeach
                     </div>
                 @endforeach
