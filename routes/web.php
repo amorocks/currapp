@@ -36,6 +36,7 @@ Route::group(['middleware' => 'auth'], function(){
 
 	Route::group(['prefix' => 'settings'], function(){
 		Route::resource('types', 'TypeController', ['except' => 'show']);
+		Route::resource('tag-types', 'TagTypeController', ['except' => 'show']);
 		Route::resource('periodisations', 'PeriodisationController', ['except' => 'show']);
 	});
 

@@ -10906,3 +10906,11 @@ p > a,
           align-items: center;
 }
 
+.color-circle {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  -webkit-box-shadow: 1px 1px 5px 0px #ccc;
+          box-shadow: 1px 1px 5px 0px #ccc;
+}
+
