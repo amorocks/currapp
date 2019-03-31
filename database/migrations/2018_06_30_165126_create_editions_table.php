@@ -18,7 +18,7 @@ class CreateEditionsTable extends Migration
             $table->integer('course_id')->unsigned();
             $table->integer('term_id')->unsigned();
             $table->integer('classes_per_week')->unsigned()->nullable();
-            $table->integer('hours_per_class')->unsigned()->nullable();
+            $table->float('hours_per_class')->nullable();
             $table->text('review')->nullable();
 
             $table->foreign('course_id')

@@ -12,7 +12,7 @@ class EditionController extends Controller
     {
         $this->validate(request(), [
             'classes_per_week' => 'required|integer',
-            'hours_per_class' => 'required|integer',
+            'hours_per_class' => 'required|numeric',
             'review' => 'required'
         ]);
 
