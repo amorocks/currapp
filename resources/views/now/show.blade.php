@@ -31,7 +31,7 @@
             @for($i = 1; $i <= $cohorts->max('terms_per_year'); $i++)
 				<div class="topic" style="
                     grid-column: {{ $i+1 }}
-                ">p{{ str_pad($i, '2', '0', STR_PAD_LEFT) }}</div>
+                ">Kwartaal {{ $i }}</div>
 			@endfor
         </div>
 
