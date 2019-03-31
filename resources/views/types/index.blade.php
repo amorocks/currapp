@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+@includeWhen(count($types) < 1, 'layouts.empty', ['type' => 'vaksoort'])
 
 <ul class="list-unstyled">
 	@foreach($types as $type)

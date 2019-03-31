@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+@includeWhen(count($periodisations) < 1, 'layouts.empty', ['type' => 'periodisering'])
 
 <ul class="list-unstyled">
 	@foreach($periodisations as $p)

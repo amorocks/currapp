@@ -6,10 +6,14 @@
 @endsection
 
 @section('content')
-	
+@includeWhen(count($cohorts) < 1, 'layouts.empty', ['type' => 'cohort'])
+
+@unless(count($cohorts) < 1)
 <div class="breadcrumbs">
 	<small>Kwalificaties &gt; {{ $qualification->title }} &gt; cohorten</small>
 </div>
+@endunless
+
 <ul class="list-unstyled">
 	@foreach($cohorts as $cohort)
 		<li>

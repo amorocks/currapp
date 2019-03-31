@@ -5,10 +5,9 @@
 @endsection
 
 @section('content')
+@includeWhen(count($qualifications) < 1, 'layouts.empty', ['type' => 'opleiding'])
 
-<div class="breadcrumbs">
-	<small>Kwalificaties</small>
-</div>
+
 <ul class="list-unstyled qualifications">
 	@foreach($qualifications as $q)
 		<li>

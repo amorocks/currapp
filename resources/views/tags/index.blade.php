@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+@includeWhen(count($tags) < 1, 'layouts.empty', ['type' => 'tag'])
 
 <ul class="list-unstyled mt-5">
 	@foreach($tags as $tag)
