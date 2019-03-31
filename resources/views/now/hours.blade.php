@@ -18,7 +18,7 @@
 	</nav>
 @endsection
 
-@section('container', 'container-fluid')
+@section('container', 'container-fluid fullheight-spread')
 
 
 @section('content')
@@ -111,8 +111,8 @@
         </div>
     </div>
 
-    <div class="alert alert-secondary my-5">
-        <i class="fas fa-info fa-fw"></i> Totalen zijn slechts indicatief, gezien uitzonderingen als toetsweek, GAP-week, etc. hierin niet zijn meegenomen.
+    <div class="alert alert-light mb-5 text-center">
+        <i class="fas fa-info fa-fw"></i> Totalen zijn slechts indicatief; uitzonderingen als toetsweek, GAP-week, enzovoort zijn hierin niet meegenomen.
     </div>
 
 @endsection

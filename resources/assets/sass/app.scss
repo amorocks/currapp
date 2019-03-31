@@ -20,6 +20,13 @@
 	margin-top: 2rem;
 }
 
+.fullheight-spread{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	min-height: calc(100vh - 133.2px - 2rem);
+}
+
 form{
 	font-family: sans-serif;
 }
