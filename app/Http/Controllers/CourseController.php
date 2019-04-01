@@ -26,6 +26,7 @@ class CourseController extends Controller
     {
         return view('courses.form')
             ->with('course', new Course())
+            ->with('tags', Tag::all())
             ->with('types', Type::all());
     }
 
