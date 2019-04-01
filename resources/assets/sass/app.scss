@@ -43,6 +43,10 @@ a:not([href]){
 	cursor: pointer;
 }
 
+a:not([href]):hover{
+	text-decoration: underline !important;
+}
+
 p > a, .underline{
 	text-decoration: underline !important;
 }

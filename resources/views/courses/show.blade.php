@@ -12,8 +12,17 @@
 @section('content')
 
 <div class="course">
-	<h2 class="mb-0">{{ $course->title }}</h2>
-	<p class="lead font-weight-bold text-muted">{{ $course->type }}, vakeigenaar {{ $course->owner }}</p>
+	<div class="d-flex justify-content-between">
+		<div>
+			<h2 class="mb-0">{{ $course->title }}</h2>
+			<p class="lead font-weight-bold text-muted">{{ $course->type }}, vakeigenaar {{ $course->owner }}</p>
+		</div>
+		<div>
+			@foreach($course->tags as $tag)
+				<span class="badge badge-pill" style="background-color: {{ $tag->type->back_color }}; color: {{ $tag->type->text_color }};">{{ $tag->title }}</span>
+			@endforeach
+		</div>
+	</div>
 
 	<div class="trix-content mb-4">
 		{!! $course->description ?? '<p><a class="underline" href="' . route('courses.edit', $course) . '">Vul het doel, relevantie en gedachte achter het vak in.</a></p>' !!}

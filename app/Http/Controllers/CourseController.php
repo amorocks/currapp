@@ -6,6 +6,7 @@ use App\Course;
 use App\Type;
 use App\Edition;
 use App\Term;
+use App\Tag;
 use Illuminate\Http\Request;
 use Auth;
 
@@ -63,8 +64,14 @@ class CourseController extends Controller
 
     public function edit(Course $course)
     {
+
+        $tags = Tag::whereDoesntHave('courses', function ($query) use($course) {
+            $query->where('course_id', $course->id);
+        })->get();
+
         return view('courses.form')
             ->with(compact('course'))
+            ->with(compact('tags'))
             ->with('types', Type::all());
     }
 
@@ -95,6 +102,12 @@ class CourseController extends Controller
     {
         $course->delete();
         return redirect()->route('courses.index');
+    }
+
+    public function toggle_tag(Course $course, Tag $tag)
+    {
+        $status = $course->tags()->toggle($tag);
+        return count($status['attached']);
     }
 
 }

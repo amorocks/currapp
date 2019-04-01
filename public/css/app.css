@@ -10762,20 +10762,31 @@ a.text-gray:focus {
           align-items: center;
 }
 
-.courses ul {
+.courses ul,
+.tags ul {
   list-style-type: none;
   padding: 0;
 }
 
-.courses li {
+.courses li,
+.tags li {
   margin: .5rem 0;
   color: #007bff;
   cursor: pointer;
 }
 
-.courses li:hover {
+.courses li:hover,
+.tags li:hover {
   text-decoration: underline;
   color: #6c757d;
+}
+
+.tags li:hover {
+  text-decoration: none;
+}
+
+.tags li .badge {
+  font-size: 100%;
 }
 
 .courses > * {
@@ -10887,6 +10898,10 @@ table label {
 
 a:not([href]) {
   cursor: pointer;
+}
+
+a:not([href]):hover {
+  text-decoration: underline !important;
 }
 
 p > a,

@@ -44,6 +44,54 @@
                 <small class="form-text text-muted">Vul een docent-code in, bijvoorbeeld ab01.</small>
             </div>
         </div>
+        <div class="form-group row" data-controller="modal tags" data-course="{{ $course->id }}">
+            <label class="col-sm-2 col-form-label">Tags</label>
+            <div class="col-sm-10 d-flex align-items-center" data-target="tags.tags">
+                @foreach($course->tags as $tag)
+                    <span class="badge badge-pill mr-2" style="background-color: {{ $tag->type->back_color }}; color: {{ $tag->type->text_color }};">{{ $tag->title }}</span>
+                @endforeach
+                <span id="add-link"><a data-action="click->modal#open">+ aanpassen</a></span>
+                <div class="modal fade" data-target="modal.modal">
+                    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-body row tags">
+                                <div class="col-sm">
+                                    <h5>Tags</h5>
+                                    <ul data-target="tags.assigned">
+                                    @foreach($course->tags as $tag)
+                                    <li data-id="{{ $tag->id }}" class="d-flex align-items-center mb-2" data-action="click->tags#toggle">
+                                        <i class="fas fa-fw fa-trash mr-2"></i>
+                                        <span class="badge badge-pill mr-2" style="background-color: {{ $tag->type->back_color }}; color: {{ $tag->type->text_color }};">
+                                            {{ $tag->title }}
+                                        </span>
+                                    </li>
+                                    @endforeach
+                                    </ul>
+                                </div>
+                                <div class="col-sm">
+                                    <h5>Beschikbaar</h5>
+                                    <ul data-target="tags.available">
+                                    @foreach($tags as $tag)
+                                    <li data-id="{{ $tag->id }}" class="d-flex align-items-center mb-2" data-action="click->tags#toggle">
+                                        <i class="fas fa-fw fa-plus mr-2"></i>
+                                        <span class="badge badge-pill mr-2" style="background-color: {{ $tag->type->back_color }}; color: {{ $tag->type->text_color }};">
+                                            {{ $tag->title }}
+                                        </span>
+                                    </li>
+                                    @endforeach
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-success" data-action="click->modal#close">
+                                    <i class="fas fa-check" aria-hidden="true"></i> Klaar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Doel, relevantie en / of achterliggende gedachte van het vak</label>
             <div class="col-sm-10 py-2">

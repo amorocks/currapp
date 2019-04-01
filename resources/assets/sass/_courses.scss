@@ -1,4 +1,4 @@
-.courses{
+.courses, .tags{
 
 	ul{
 		list-style-type: none;
@@ -16,6 +16,14 @@
 		color: $secondary;
 	}
 
+}
+
+.tags li:hover{
+	text-decoration: none;
+}
+
+.tags li .badge{
+	font-size: 100%;
 }
 
 .courses > *{

@@ -19,6 +19,11 @@ class Course extends Model
         return $this->belongsToMany('App\Term', 'editions')->using('App\Edition')->withPivot('id', 'classes_per_week', 'hours_per_class', 'review');
     }
 
+    public function tags()
+    {
+        return $this->belongsToMany('App\Tag');
+    }
+
     public static function allWithMineOnTop()
     {
     	return self::all()->sortByDesc(function($course, $key){

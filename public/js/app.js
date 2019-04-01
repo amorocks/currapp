@@ -2501,7 +2501,8 @@ var map = {
 	"./courses_controller.js": 40,
 	"./dropdown_controller.js": 41,
 	"./filter_controller.js": 42,
-	"./modal_controller.js": 68
+	"./modal_controller.js": 68,
+	"./tags_controller.js": 70
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -3827,6 +3828,71 @@ var _class = function (_Controller) {
 }(__WEBPACK_IMPORTED_MODULE_0_stimulus__["b" /* Controller */]);
 
 _class.targets = ["modal"];
+/* harmony default export */ __webpack_exports__["default"] = (_class);
+
+/***/ }),
+/* 69 */,
+/* 70 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_stimulus__ = __webpack_require__(1);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+var _class = function (_Controller) {
+    _inherits(_class, _Controller);
+
+    function _class() {
+        _classCallCheck(this, _class);
+
+        return _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).apply(this, arguments));
+    }
+
+    _createClass(_class, [{
+        key: "toggle",
+        value: function toggle(event) {
+
+            var el = event.currentTarget;
+            var el2 = event.currentTarget.cloneNode(true);
+            var assigned = this.assignedTarget;
+            var available = this.availableTarget;
+            var tags = this.tagsTarget;
+
+            var icon = el.getElementsByTagName("i")[0];
+            icon.className = "fas fa-fw fa-spinner fa-spin fa-lg";
+
+            axios.post('/courses/' + this.element.dataset.course + '/toggle/tag/' + el.dataset.id).then(function (response) {
+
+                var added = response.data ? true : false;
+                if (added) {
+                    tags.insertBefore(el2.getElementsByTagName("span")[0], document.getElementById('add-link'));
+                    available.removeChild(el);
+                    assigned.appendChild(el);
+                    icon.className = "fas fa-fw fa-trash mr-2";
+                } else {
+                    assigned.removeChild(el);
+                    available.appendChild(el);
+                    icon.className = "fas fa-fw fa-plus mr-2";
+                }
+            }).catch(function (error) {
+                console.log(error);
+            });
+        }
+    }]);
+
+    return _class;
+}(__WEBPACK_IMPORTED_MODULE_0_stimulus__["b" /* Controller */]);
+
+_class.targets = ["assigned", "available", "tags"];
 /* harmony default export */ __webpack_exports__["default"] = (_class);
 
 /***/ })
