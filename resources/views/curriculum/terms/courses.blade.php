@@ -20,7 +20,7 @@
 @section('content')
 
 	<div class="courses" data-controller="filter courses" data-term="{{ $term->id }}">
-		<h3>Vakken in deze periode</h3>
+		<h3>Vakken in {{ $term->full_title }}</h3>
 		<ul data-target="courses.assigned">
 			@foreach($term->courses as $course)
 				<li data-id="{{ $course->id }}" data-action="click->courses#toggle">

@@ -29,7 +29,7 @@
 	</div>
 	
 
-	@foreach($terms as $term)
+	@forelse($terms as $term)
 	<div data-controller="modal">
 
 		<!-- card -->
@@ -90,7 +90,13 @@
 			</div>
 		</div>
 	</div>
-	@endforeach
+
+	@empty
+	
+		<p class="mt-5"><em>Dit vak is nog niet gekoppeld aan een periode.<br />Ga daarvoor naar <a href="{{ route('qualifications.index') }}">Cohorten</a>, kies een opleiding, cohort, en pas de periode aan.</em></p>
+	
+	@endforelse
+
 </div>
 @endsection
 	

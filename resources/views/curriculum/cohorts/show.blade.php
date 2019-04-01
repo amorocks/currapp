@@ -50,12 +50,16 @@
                 grid-template-columns: 45px repeat({{ count($types) ?: 1  }}, 1fr) 30px;
                 ">
                 <div class="number">
-                    {{ $term->title }}
+                    <a href="{{ route('qualifications.cohorts.terms.courses', [$qualification, $cohort, $term]) }}">
+                        {{ $term->title }}
+                    </a>
                 </div>
                 @foreach($term->courses as $course)
                     <div class="course" style="
                         grid-column: {{ $types[$course->type->id] }}
-                    ">{{ $course->title }}</div>
+                    ">
+                        <a href="{{ route('courses.show.edition', [$course, $course->pivot]) }}" target="_blank">{{ $course->title }}</a>
+                    </div>
                 @endforeach
                 <a class="add-course" href="{{ route('qualifications.cohorts.terms.courses', [$qualification, $cohort, $term]) }}" style="grid-column: {{ (count($types) ?: 1)+2  }};"><i class="fas fa-pen"></i></a>
             </div>
