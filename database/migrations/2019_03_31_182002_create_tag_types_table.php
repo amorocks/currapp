@@ -17,7 +17,7 @@ class CreateTagTypesTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->string('back_color');
-            $table->string('text_color')
+            $table->string('text_color');
             $table->timestamps();
         });
     }
