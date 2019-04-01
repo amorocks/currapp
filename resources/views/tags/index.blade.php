@@ -13,7 +13,7 @@
 			<a href="{{ route('tags.edit', $tag) }}">
 				<h2>{{ $tag->title }}</h2>
 				<small class="d-flex align-items-center">
-					<span class="color-circle mr-2" style="background-color: {{ $tag->type->color }}"></span>
+					<span class="color-circle mr-2" style="background-color: {{ $tag->type->back_color }}"></span>
 					{{ $tag->type->title }}
 				</small>
 			</a>

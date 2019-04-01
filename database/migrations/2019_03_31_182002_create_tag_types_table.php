@@ -16,7 +16,8 @@ class CreateTagTypesTable extends Migration
         Schema::create('tag_types', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->string('color');
+            $table->string('back_color');
+            $table->string('text_color')
             $table->timestamps();
         });
     }

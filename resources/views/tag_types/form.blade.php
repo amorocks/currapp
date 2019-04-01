@@ -24,7 +24,7 @@
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Kleur</label>
             <div class="col-sm-10">
-                <input type="color" required name="color" value="{{ old('color', $type->color) }}">
+                <input type="color" required name="color" value="{{ old('color', $type->back_color) }}">
                 <small class="form-text text-muted">Alle tags van dit type krijgen deze kleur mee.</small>
             </div>
         </div>
