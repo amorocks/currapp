@@ -37,7 +37,7 @@
 
 <div class="bg-light fixed-bottom p-3">
 	<h5 class="mb-0">Feedback</h5>
-	<p class="mb-0">Maak <a href="https://github.com/amorocks/currapp/issues/new/choose" target="_blank">direct een issue aan</a> voor idee&euml;n, suggesties of problemen, of stuur een e-mail naar <a href="mailto:br10@rocwb.nl">br10@rocwb.nl</a>.</p>
+	<p class="mb-0">Maak <a href="https://github.com/amorocks/currapp/issues/new/choose" target="_blank">direct een issue aan</a> voor idee&euml;n, suggesties of problemen, of stuur een e-mail naar <a href="mailto:br10@rocwb.nl?subject=CurrApp+2.0">br10@rocwb.nl</a>.</p>
 </div>
 
 @endsection

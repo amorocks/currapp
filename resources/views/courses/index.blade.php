@@ -12,8 +12,7 @@
 		<li>
 			<a href="{{ route('courses.show', $course) }}">
 				<h2>{{ $course->title }}</h2>
-				<p>Vakeigenaar: {{ $course->owner }}</p>
-				<p><small class="text-muted">{{ $course->type->title }}</small></p>
+				<p>{{ $course->type->title }}, vakeigenaar: {{ $course->owner }}</p>
 			</a>
 		</li>
 	@endforeach
