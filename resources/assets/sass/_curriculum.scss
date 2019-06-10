@@ -50,3 +50,20 @@
 		align-items: center;
 	}
 }
+
+@media print{
+	.term:hover .add-course{
+		display: none;
+	}
+
+	a{
+		text-decoration: none !important;
+	}
+
+	.spacer:not(:nth-child(2)){
+		height: 1px !important;
+		border-top: 1px solid black;
+		padding-top: 2rem;
+		margin-top: 2rem;
+	}
+}
