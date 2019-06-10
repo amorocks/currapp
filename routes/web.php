@@ -47,8 +47,6 @@ Route::group(['middleware' => 'auth'], function(){
 
 	//AJAX routes
 	Route::post('/curriculum/toggle/term/{term}/course/{course}', 'TermController@toggle_course');
-	Route::post('/courses/{course}/toggle/tag/{tag}', 'CourseController@toggle_tag');
-
 });
 
 

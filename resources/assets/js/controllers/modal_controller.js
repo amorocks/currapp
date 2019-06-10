@@ -9,7 +9,9 @@ export default class extends Controller {
         this.modalTarget.classList.add("modal-open");
         this.modalTarget.setAttribute("style", "display: block;");
         this.modalTarget.classList.add("show");
-        document.body.innerHTML += '<div class="modal-backdrop fade show"></div>';
+        var backdrop = document.createElement('div');
+        backdrop.classList.add('modal-backdrop', 'fade', 'show');
+        document.body.appendChild(backdrop);
     }
 
     close() {

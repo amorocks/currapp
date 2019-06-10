@@ -46,9 +46,16 @@
         </div>
         <div class="form-group row" data-controller="modal tags" data-course="{{ $course->id }}">
             <label class="col-sm-2 col-form-label">Tags</label>
+            <select name="tags[]" id="" multiple data-target="tags.select" style="display: none;">
+                @foreach($tags as $tag)
+                    <option value="{{ $tag->id }}" @if($course->tags->contains($tag)) selected @endif>
+                        {{ $tag->title }}
+                    </option>
+                @endforeach
+            </select>
             <div class="col-sm-10 d-flex align-items-center" data-target="tags.tags">
                 @foreach($course->tags as $tag)
-                    <span class="badge badge-pill mr-2" style="background-color: {{ $tag->type->back_color }}; color: {{ $tag->type->text_color }};">{{ $tag->title }}</span>
+                    <span id="badge-{{ $tag->id }}" class="badge badge-pill mr-2" style="background-color: {{ $tag->type->back_color }}; color: {{ $tag->type->text_color }};">{{ $tag->title }}</span>
                 @endforeach
                 <span id="add-link"><a data-action="click->modal#open">+ aanpassen</a></span>
                 <div class="modal fade" data-target="modal.modal">
@@ -71,7 +78,7 @@
                                 <div class="col-sm">
                                     <h5>Beschikbaar</h5>
                                     <ul data-target="tags.available">
-                                    @foreach($tags as $tag)
+                                    @foreach($available as $tag)
                                     <li data-id="{{ $tag->id }}" class="d-flex align-items-center mb-2" data-action="click->tags#toggle">
                                         <i class="fas fa-fw fa-plus mr-2"></i>
                                         <span class="badge badge-pill mr-2" style="background-color: {{ $tag->type->back_color }}; color: {{ $tag->type->text_color }};">
@@ -96,7 +103,7 @@
             <label class="col-sm-2 col-form-label">Doel, relevantie en / of achterliggende gedachte van het vak</label>
             <div class="col-sm-10 py-2">
                 <input type="hidden" name="description" id="description" value="{{ old('description', $course->description) }}">
-                <trix-editor input="description" class="trix-content"></trix-editor>
+                <trix-editor input="description" class="trix-content" style="min-height: 150px;"></trix-editor>
             </div>
         </div>
 

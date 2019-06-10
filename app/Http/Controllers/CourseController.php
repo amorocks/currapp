@@ -24,9 +24,12 @@ class CourseController extends Controller
 
     public function create()
     {
+        $available = $tags = Tag::all();
+
         return view('courses.form')
             ->with('course', new Course())
-            ->with('tags', Tag::all())
+            ->with(compact('tags'))
+            ->with(compact('available'))
             ->with('types', Type::all());
     }
 
@@ -38,7 +41,15 @@ class CourseController extends Controller
             'owner' => 'required|alpha_dash'
         ]);
 
-        Course::create($request->all());
+        $course = new Course();
+        $course->title = $request->title;
+        $course->type_id = $request->type_id;
+        $course->owner = $request->owner;
+        $course->description = $request->description;
+        $course->save();
+
+        $course->tags()->sync($request->tags);
+
         return redirect()->route('courses.index');
     }
 
@@ -65,14 +76,15 @@ class CourseController extends Controller
 
     public function edit(Course $course)
     {
-
-        $tags = Tag::whereDoesntHave('courses', function ($query) use($course) {
-            $query->where('course_id', $course->id);
-        })->get();
+        $tags = Tag::all();
+        $available = $tags->reject(function ($tag, $key) use ($course) {
+            return $course->tags->contains($tag);
+        });
 
         return view('courses.form')
             ->with(compact('course'))
             ->with(compact('tags'))
+            ->with(compact('available'))
             ->with('types', Type::all());
     }
 
@@ -90,6 +102,8 @@ class CourseController extends Controller
         $course->description = $request->description;
         $course->save();
 
+        $course->tags()->sync($request->tags);
+
         return redirect()->route('courses.show', $course);
     }
 
@@ -103,12 +117,6 @@ class CourseController extends Controller
     {
         $course->delete();
         return redirect()->route('courses.index');
-    }
-
-    public function toggle_tag(Course $course, Tag $tag)
-    {
-        $status = $course->tags()->toggle($tag);
-        return count($status['attached']);
     }
 
 }
