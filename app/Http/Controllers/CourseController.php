@@ -38,13 +38,15 @@ class CourseController extends Controller
         $this->validate(request(), [
             'title' => 'required|string',
             'type_id' => 'required|integer|min:1',
-            'owner' => 'required|alpha_dash'
+            'owner' => 'required|alpha_dash',
+            'link' => 'nullable|url'
         ]);
 
         $course = new Course();
         $course->title = $request->title;
         $course->type_id = $request->type_id;
         $course->owner = $request->owner;
+        $course->link = $request->link;
         $course->description = $request->description;
         $course->save();
 
@@ -93,12 +95,14 @@ class CourseController extends Controller
         $this->validate(request(), [
             'title' => 'required|string',
             'type_id' => 'required|integer|min:1',
-            'owner' => 'required|alpha_dash'
+            'owner' => 'required|alpha_dash',
+            'link' => 'nullable|url'
         ]);
 
         $course->title = $request->title;
         $course->type_id = $request->type_id;
         $course->owner = $request->owner;
+        $course->link = $request->link;
         $course->description = $request->description;
         $course->save();
 

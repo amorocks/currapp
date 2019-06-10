@@ -21,13 +21,13 @@
     @endif
 
         <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Titel</label>
+            <label class="col-sm-2 col-form-label">Titel *</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control" required name="title" value="{{ old('title', $course->title) }}">
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Vaksoort</label>
+            <label class="col-sm-2 col-form-label">Vaksoort *</label>
             <div class="col-sm-10">
                 <select class="form-control" name="type_id" id="type_id">
                     <option value="0">- kies -</option>
@@ -38,10 +38,17 @@
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Vak-eigenaar</label>
+            <label class="col-sm-2 col-form-label">Vak-eigenaar *</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control" required name="owner" value="{{ old('owner', $course->owner) }}" placeholder="ab01">
                 <small class="form-text text-muted">Vul een docent-code in, bijvoorbeeld ab01.</small>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Link</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="link" value="{{ old('link', $course->link) }}">
+                <small class="form-text text-muted">Optioneel; link naar het sjabloonvak op Itslearning.</small>
             </div>
         </div>
         <div class="form-group row" data-controller="modal tags" data-course="{{ $course->id }}">

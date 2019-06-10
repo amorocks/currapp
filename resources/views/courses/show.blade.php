@@ -15,7 +15,7 @@
 	<div class="d-flex justify-content-between">
 		<div>
 			<h2 class="mb-0">{{ $course->title }}</h2>
-			<p class="lead font-weight-bold text-muted">{{ $course->type }}, vakeigenaar {{ $course->owner }}</p>
+			<p class="lead font-weight-bold text-muted mb-0">{{ $course->type }}, vakeigenaar {{ $course->owner }}</p>
 		</div>
 		<div>
 			@foreach($course->tags as $tag)
@@ -24,7 +24,11 @@
 		</div>
 	</div>
 
-	<div class="trix-content mb-4">
+	@unless(empty($course->link))
+		<div><a href="{{ $course->link }}" target="_blank">{{ $course->title }} op Itslearning <i class="fas fa-external-link-alt"></i></a></div>
+	@endunless
+
+	<div class="trix-content my-4">
 		{!! $course->description ?? '<p><a class="underline" href="' . route('courses.edit', $course) . '">Vul het doel, relevantie en gedachte achter het vak in.</a></p>' !!}
 	</div>
 	
