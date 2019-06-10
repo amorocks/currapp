@@ -33,7 +33,7 @@
 	<div data-controller="modal">
 
 		<!-- card -->
-		<div class="card my-4 @if(optional($edition)->id == $term->pivot->id) border-secondary mb-5 @endif">
+		<div class="card my-4 @if(optional($edition)->id == $term->pivot->id) border-secondary mb-5 emphasise @endif">
 			<h4 class="card-header @if(optional($edition)->id == $term->pivot->id) bg-secondary text-white @endif">Editie {{ $term->full_title }}</h4>
 			<div class="card-body">
 				<p class="card-text">

@@ -71,7 +71,7 @@
 
 
 var bind = __webpack_require__(13);
-var isBuffer = __webpack_require__(45);
+var isBuffer = __webpack_require__(47);
 
 /*global toString:true*/
 
@@ -522,7 +522,7 @@ var ElementObserver = /** @class */ (function () {
 /* WEBPACK VAR INJECTION */(function(process) {
 
 var utils = __webpack_require__(0);
-var normalizeHeaderName = __webpack_require__(48);
+var normalizeHeaderName = __webpack_require__(50);
 
 var DEFAULT_CONTENT_TYPE = {
   'Content-Type': 'application/x-www-form-urlencoded'
@@ -616,7 +616,7 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 
 module.exports = defaults;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(47)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(49)))
 
 /***/ }),
 /* 4 */
@@ -1086,12 +1086,12 @@ module.exports = function bind(fn, thisArg) {
 
 
 var utils = __webpack_require__(0);
-var settle = __webpack_require__(49);
-var buildURL = __webpack_require__(51);
-var parseHeaders = __webpack_require__(52);
-var isURLSameOrigin = __webpack_require__(53);
+var settle = __webpack_require__(51);
+var buildURL = __webpack_require__(53);
+var parseHeaders = __webpack_require__(54);
+var isURLSameOrigin = __webpack_require__(55);
 var createError = __webpack_require__(15);
-var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(54);
+var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(56);
 
 module.exports = function xhrAdapter(config) {
   return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -1188,7 +1188,7 @@ module.exports = function xhrAdapter(config) {
     // This is only done if running in a standard browser environment.
     // Specifically not if we're in a web worker, or react-native.
     if (utils.isStandardBrowserEnv()) {
-      var cookies = __webpack_require__(55);
+      var cookies = __webpack_require__(57);
 
       // Add xsrf header
       var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
@@ -1272,7 +1272,7 @@ module.exports = function xhrAdapter(config) {
 "use strict";
 
 
-var enhanceError = __webpack_require__(50);
+var enhanceError = __webpack_require__(52);
 
 /**
  * Create an Error with the specified message, config, error code, request and response.
@@ -1333,7 +1333,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(19);
-module.exports = __webpack_require__(63);
+module.exports = __webpack_require__(65);
 
 
 /***/ }),
@@ -1366,7 +1366,7 @@ var context = __webpack_require__(39);
 application.load(Object(__WEBPACK_IMPORTED_MODULE_1_stimulus_webpack_helpers__["a" /* definitionsFromContext */])(context));
 
 //Axios
-window.axios = __webpack_require__(43);
+window.axios = __webpack_require__(45);
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 window.axios.defaults.withCredentials = true;
 
@@ -2501,8 +2501,8 @@ var map = {
 	"./courses_controller.js": 40,
 	"./dropdown_controller.js": 41,
 	"./filter_controller.js": 42,
-	"./modal_controller.js": 68,
-	"./tags_controller.js": 70
+	"./modal_controller.js": 43,
+	"./tags_controller.js": 44
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -2693,12 +2693,127 @@ _class.targets = ["query", "list"];
 
 /***/ }),
 /* 43 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-module.exports = __webpack_require__(44);
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_stimulus__ = __webpack_require__(1);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+// src/controllers/modal-controller.js
+
+
+var _class = function (_Controller) {
+    _inherits(_class, _Controller);
+
+    function _class() {
+        _classCallCheck(this, _class);
+
+        return _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).apply(this, arguments));
+    }
+
+    _createClass(_class, [{
+        key: "open",
+        value: function open() {
+            this.modalTarget.classList.add("modal-open");
+            this.modalTarget.setAttribute("style", "display: block;");
+            this.modalTarget.classList.add("show");
+            document.body.innerHTML += '<div class="modal-backdrop fade show"></div>';
+        }
+    }, {
+        key: "close",
+        value: function close() {
+            this.modalTarget.classList.remove("modal-open");
+            this.modalTarget.removeAttribute("style");
+            this.modalTarget.classList.remove("show");
+            document.getElementsByClassName("modal-backdrop")[0].remove();
+        }
+    }]);
+
+    return _class;
+}(__WEBPACK_IMPORTED_MODULE_0_stimulus__["b" /* Controller */]);
+
+_class.targets = ["modal"];
+/* harmony default export */ __webpack_exports__["default"] = (_class);
 
 /***/ }),
 /* 44 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_stimulus__ = __webpack_require__(1);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+var _class = function (_Controller) {
+    _inherits(_class, _Controller);
+
+    function _class() {
+        _classCallCheck(this, _class);
+
+        return _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).apply(this, arguments));
+    }
+
+    _createClass(_class, [{
+        key: "toggle",
+        value: function toggle(event) {
+
+            var el = event.currentTarget;
+            var el2 = event.currentTarget.cloneNode(true);
+            var assigned = this.assignedTarget;
+            var available = this.availableTarget;
+            var tags = this.tagsTarget;
+
+            var icon = el.getElementsByTagName("i")[0];
+            icon.className = "fas fa-fw fa-spinner fa-spin fa-lg";
+
+            axios.post('/courses/' + this.element.dataset.course + '/toggle/tag/' + el.dataset.id).then(function (response) {
+
+                var added = response.data ? true : false;
+                if (added) {
+                    tags.insertBefore(el2.getElementsByTagName("span")[0], document.getElementById('add-link'));
+                    available.removeChild(el);
+                    assigned.appendChild(el);
+                    icon.className = "fas fa-fw fa-trash mr-2";
+                } else {
+                    assigned.removeChild(el);
+                    available.appendChild(el);
+                    icon.className = "fas fa-fw fa-plus mr-2";
+                }
+            }).catch(function (error) {
+                console.log(error);
+            });
+        }
+    }]);
+
+    return _class;
+}(__WEBPACK_IMPORTED_MODULE_0_stimulus__["b" /* Controller */]);
+
+_class.targets = ["assigned", "available", "tags"];
+/* harmony default export */ __webpack_exports__["default"] = (_class);
+
+/***/ }),
+/* 45 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(46);
+
+/***/ }),
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2706,7 +2821,7 @@ module.exports = __webpack_require__(44);
 
 var utils = __webpack_require__(0);
 var bind = __webpack_require__(13);
-var Axios = __webpack_require__(46);
+var Axios = __webpack_require__(48);
 var defaults = __webpack_require__(3);
 
 /**
@@ -2741,14 +2856,14 @@ axios.create = function create(instanceConfig) {
 
 // Expose Cancel & CancelToken
 axios.Cancel = __webpack_require__(17);
-axios.CancelToken = __webpack_require__(61);
+axios.CancelToken = __webpack_require__(63);
 axios.isCancel = __webpack_require__(16);
 
 // Expose all/spread
 axios.all = function all(promises) {
   return Promise.all(promises);
 };
-axios.spread = __webpack_require__(62);
+axios.spread = __webpack_require__(64);
 
 module.exports = axios;
 
@@ -2757,7 +2872,7 @@ module.exports.default = axios;
 
 
 /***/ }),
-/* 45 */
+/* 47 */
 /***/ (function(module, exports) {
 
 /*!
@@ -2784,7 +2899,7 @@ function isSlowBuffer (obj) {
 
 
 /***/ }),
-/* 46 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2792,8 +2907,8 @@ function isSlowBuffer (obj) {
 
 var defaults = __webpack_require__(3);
 var utils = __webpack_require__(0);
-var InterceptorManager = __webpack_require__(56);
-var dispatchRequest = __webpack_require__(57);
+var InterceptorManager = __webpack_require__(58);
+var dispatchRequest = __webpack_require__(59);
 
 /**
  * Create a new instance of Axios
@@ -2870,7 +2985,7 @@ module.exports = Axios;
 
 
 /***/ }),
-/* 47 */
+/* 49 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -3060,7 +3175,7 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 48 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3079,7 +3194,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 
 
 /***/ }),
-/* 49 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3112,7 +3227,7 @@ module.exports = function settle(resolve, reject, response) {
 
 
 /***/ }),
-/* 50 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3140,7 +3255,7 @@ module.exports = function enhanceError(error, config, code, request, response) {
 
 
 /***/ }),
-/* 51 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3213,7 +3328,7 @@ module.exports = function buildURL(url, params, paramsSerializer) {
 
 
 /***/ }),
-/* 52 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3273,7 +3388,7 @@ module.exports = function parseHeaders(headers) {
 
 
 /***/ }),
-/* 53 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3348,7 +3463,7 @@ module.exports = (
 
 
 /***/ }),
-/* 54 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3391,7 +3506,7 @@ module.exports = btoa;
 
 
 /***/ }),
-/* 55 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3451,7 +3566,7 @@ module.exports = (
 
 
 /***/ }),
-/* 56 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3510,18 +3625,18 @@ module.exports = InterceptorManager;
 
 
 /***/ }),
-/* 57 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var utils = __webpack_require__(0);
-var transformData = __webpack_require__(58);
+var transformData = __webpack_require__(60);
 var isCancel = __webpack_require__(16);
 var defaults = __webpack_require__(3);
-var isAbsoluteURL = __webpack_require__(59);
-var combineURLs = __webpack_require__(60);
+var isAbsoluteURL = __webpack_require__(61);
+var combineURLs = __webpack_require__(62);
 
 /**
  * Throws a `Cancel` if cancellation has been requested.
@@ -3603,7 +3718,7 @@ module.exports = function dispatchRequest(config) {
 
 
 /***/ }),
-/* 58 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3630,7 +3745,7 @@ module.exports = function transformData(data, headers, fns) {
 
 
 /***/ }),
-/* 59 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3651,7 +3766,7 @@ module.exports = function isAbsoluteURL(url) {
 
 
 /***/ }),
-/* 60 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3672,7 +3787,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 
 
 /***/ }),
-/* 61 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3736,7 +3851,7 @@ module.exports = CancelToken;
 
 
 /***/ }),
-/* 62 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3770,130 +3885,10 @@ module.exports = function spread(callback) {
 
 
 /***/ }),
-/* 63 */
+/* 65 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 64 */,
-/* 65 */,
-/* 66 */,
-/* 67 */,
-/* 68 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_stimulus__ = __webpack_require__(1);
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-// src/controllers/modal-controller.js
-
-
-var _class = function (_Controller) {
-    _inherits(_class, _Controller);
-
-    function _class() {
-        _classCallCheck(this, _class);
-
-        return _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).apply(this, arguments));
-    }
-
-    _createClass(_class, [{
-        key: "open",
-        value: function open() {
-            this.modalTarget.classList.add("modal-open");
-            this.modalTarget.setAttribute("style", "display: block;");
-            this.modalTarget.classList.add("show");
-            document.body.innerHTML += '<div class="modal-backdrop fade show"></div>';
-        }
-    }, {
-        key: "close",
-        value: function close() {
-            this.modalTarget.classList.remove("modal-open");
-            this.modalTarget.removeAttribute("style");
-            this.modalTarget.classList.remove("show");
-            document.getElementsByClassName("modal-backdrop")[0].remove();
-        }
-    }]);
-
-    return _class;
-}(__WEBPACK_IMPORTED_MODULE_0_stimulus__["b" /* Controller */]);
-
-_class.targets = ["modal"];
-/* harmony default export */ __webpack_exports__["default"] = (_class);
-
-/***/ }),
-/* 69 */,
-/* 70 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_stimulus__ = __webpack_require__(1);
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-
-
-var _class = function (_Controller) {
-    _inherits(_class, _Controller);
-
-    function _class() {
-        _classCallCheck(this, _class);
-
-        return _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).apply(this, arguments));
-    }
-
-    _createClass(_class, [{
-        key: "toggle",
-        value: function toggle(event) {
-
-            var el = event.currentTarget;
-            var el2 = event.currentTarget.cloneNode(true);
-            var assigned = this.assignedTarget;
-            var available = this.availableTarget;
-            var tags = this.tagsTarget;
-
-            var icon = el.getElementsByTagName("i")[0];
-            icon.className = "fas fa-fw fa-spinner fa-spin fa-lg";
-
-            axios.post('/courses/' + this.element.dataset.course + '/toggle/tag/' + el.dataset.id).then(function (response) {
-
-                var added = response.data ? true : false;
-                if (added) {
-                    tags.insertBefore(el2.getElementsByTagName("span")[0], document.getElementById('add-link'));
-                    available.removeChild(el);
-                    assigned.appendChild(el);
-                    icon.className = "fas fa-fw fa-trash mr-2";
-                } else {
-                    assigned.removeChild(el);
-                    available.appendChild(el);
-                    icon.className = "fas fa-fw fa-plus mr-2";
-                }
-            }).catch(function (error) {
-                console.log(error);
-            });
-        }
-    }]);
-
-    return _class;
-}(__WEBPACK_IMPORTED_MODULE_0_stimulus__["b" /* Controller */]);
-
-_class.targets = ["assigned", "available", "tags"];
-/* harmony default export */ __webpack_exports__["default"] = (_class);
 
 /***/ })
 /******/ ]);

@@ -26,7 +26,7 @@
 				<li class="list-group-item"><a href="{{ route('courses.edit', $course) }}" target="_blank">{{ $course->title }}<i class="fas fa-external-link-alt"></i></a></li>
 			@endforeach
 			@foreach($editions_empty as $edition)
-				<li class="list-group-item"><a href="{{ route('courses.show', $edition->course) }}" target="_blank">{{ $edition->course->title }} in {{ $edition->term->full_title }}<i class="fas fa-external-link-alt"></a></i></li>
+				<li class="list-group-item"><a href="{{ route('courses.show.edition', [$edition->course, $edition]) }}" target="_blank">{{ $edition->course->title }} in {{ $edition->term->full_title }}<i class="fas fa-external-link-alt"></a></i></li>
 			@endforeach
 		</ul>
 	</div>

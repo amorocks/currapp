@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
         <script src="{{ mix('/js/app.js') }}"></script>
-        <title>Hello, world!</title>
+        <title>CurrApp 2.0</title>
         @stack('head')
     </head>
     <body>
@@ -33,7 +33,7 @@
                             <a class="nav-link" href="{{ route('qualifications.index') }}">Cohorten</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="">Rapportages</a>
+                            <a class="nav-link" href=""><em>Rapportages</em></a>
                         </li>
                         
                         <li class="nav-item dropdown" data-controller="dropdown">

@@ -42,3 +42,42 @@
 	}
 
 }
+
+/* animation */
+@keyframes swing
+{
+    15%
+    {
+        -webkit-transform: translateX(8px);
+        transform: translateX(8px);
+    }
+    30%
+    {
+        -webkit-transform: translateX(-8px);
+        transform: translateX(-8px);
+    }
+    50%
+    {
+        -webkit-transform: translateX(4px);
+        transform: translateX(4px);
+    }
+    65%
+    {
+        -webkit-transform: translateX(-4px);
+        transform: translateX(-4px);
+    }
+    80%
+    {
+        -webkit-transform: translateX(2px);
+        transform: translateX(2px);
+    }
+    100%
+    {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+}
+
+.emphasise{
+	animation: swing 2s ease;
+}
