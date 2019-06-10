@@ -10869,8 +10869,8 @@ a.text-gray:focus {
 }
 
 .emphasise {
-  -webkit-animation: swing 2s ease;
-          animation: swing 2s ease;
+  -webkit-animation: swing 1.2s ease;
+          animation: swing 1.2s ease;
 }
 
 .dashboard-item {
