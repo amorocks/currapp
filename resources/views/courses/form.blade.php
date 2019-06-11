@@ -66,7 +66,7 @@
                 @endforeach
                 <span id="add-link"><a data-action="click->modal#open">+ aanpassen</a></span>
                 <div class="modal fade" data-target="modal.modal">
-                    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
                         <div class="modal-content">
                             <div class="modal-body row tags">
                                 <div class="col-sm">
