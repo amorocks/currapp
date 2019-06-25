@@ -55,5 +55,7 @@ class MySqlDump extends Command
         }
 
         exec($command);
+
+        exec("rclone sync /var/www/html/currapp/database/backups sharepoint:/backups_droplets/currapp2");
     }
 }
