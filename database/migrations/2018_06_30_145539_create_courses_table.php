@@ -20,6 +20,7 @@ class CreateCoursesTable extends Migration
             $table->string('owner');
             $table->text('description')->nullable();
             $table->text('link')->nullable();
+            $table->integer('order');
             $table->timestamps();
 
             $table->foreign('type_id')

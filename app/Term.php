@@ -20,7 +20,7 @@ class Term extends Model
 
     public function getCoursesAttribute($value)
     {
-    	return $this->courses()->orderBy('title')->get();
+    	return $this->courses()->orderBy('order')->get();
     }
 
     public function getTitleAttribute()

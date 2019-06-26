@@ -45,6 +45,13 @@
             </div>
         </div>
         <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Volgorde</label>
+            <div class="col-sm-10">
+                <input type="number" class="form-control" name="order" value="{{ old('order', $course->order) }}" placeholder="0">
+                <small class="form-text text-muted">Optioneel; met name voor projecten, geeft aan sortering binnen periode aan.</small>
+            </div>
+        </div>
+        <div class="form-group row">
             <label class="col-sm-2 col-form-label">Link</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control" name="link" value="{{ old('link', $course->link) }}">

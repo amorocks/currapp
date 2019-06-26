@@ -39,7 +39,8 @@ class CourseController extends Controller
             'title' => 'required|string',
             'type_id' => 'required|integer|min:1',
             'owner' => 'required|alpha_dash',
-            'link' => 'nullable|url'
+            'link' => 'nullable|url',
+            'order' => 'nullable|integer'
         ]);
 
         $course = new Course();
@@ -47,6 +48,7 @@ class CourseController extends Controller
         $course->type_id = $request->type_id;
         $course->owner = $request->owner;
         $course->link = $request->link;
+        $course->order = $request->order ?? 0;
         $course->description = $request->description;
         $course->save();
 
@@ -96,13 +98,15 @@ class CourseController extends Controller
             'title' => 'required|string',
             'type_id' => 'required|integer|min:1',
             'owner' => 'required|alpha_dash',
-            'link' => 'nullable|url'
+            'link' => 'nullable|url',
+            'order' => 'nullable|integer'
         ]);
 
         $course->title = $request->title;
         $course->type_id = $request->type_id;
         $course->owner = $request->owner;
         $course->link = $request->link;
+        $course->order = $request->order ?? 0;
         $course->description = $request->description;
         $course->save();
 
