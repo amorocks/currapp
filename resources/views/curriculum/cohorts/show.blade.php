@@ -36,6 +36,7 @@
         <div class="topics" style="
             grid-template-columns: 45px repeat({{ count($types)  }}, 1fr) 30px;
         ">
+            <?php $order = array(); ?>
             @foreach($types as $key => $type)
                 <div class="topic" style="
                     grid-column: {{ $loop->iteration+1 }}
