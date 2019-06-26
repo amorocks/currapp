@@ -12008,7 +12008,7 @@ a.text-gray:focus {
 
 @media print {
   .term:hover .add-course {
-    display: none;
+    display: none !important;
   }
 
   a {

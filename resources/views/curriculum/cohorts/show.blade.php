@@ -27,6 +27,10 @@
 
 @section('content')
 
+    <div class="d-none d-print-block my-5">
+        <h3><em>{{ $qualification->title }} {{ $cohort->title }}</em></h3>
+    </div>
+
 	<div class="curriculum">
         
         <div class="topics" style="
