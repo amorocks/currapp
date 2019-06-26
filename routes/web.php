@@ -19,6 +19,13 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('courses/{course}/editions/{edition}', 'CourseController@show_edition')->name('courses.show.edition');
 	Route::patch('editions/{edition}', 'EditionController@update')->name('editions.update');
 
+	Route::group(['prefix' => 'now'], function(){
+		Route::get('qualifications', 'NowController@index')->name('now.index');
+		Route::get('qualifications/{qualification}', 'NowController@show')->name('now.show');
+		Route::get('qualifications/{qualification}/{schoolyear}', 'NowController@show_year')->name('now.show.schoolyear');
+		Route::get('qualifications/{qualification}/{schoolyear}/hours', 'NowController@show_hours')->name('now.show.hours');
+	});
+
 	Route::group(['prefix' => 'curriculum'], function(){
 		Route::resource('qualifications', 'QualificationController', ['except' => ['show']]);
 		Route::resource('qualifications.cohorts', 'CohortController', ['only' => ['index', 'create', 'store', 'show']]);
@@ -27,13 +34,10 @@ Route::group(['middleware' => 'auth'], function(){
 		Route::get('/qualifications/{qualification}/cohorts/{cohort}/terms/{term}/courses', 'TermController@courses')->name('qualifications.cohorts.terms.courses');
 	});
 
-	Route::group(['prefix' => 'now'], function(){
-		Route::get('qualifications', 'NowController@index')->name('now.index');
-		Route::get('qualifications/{qualification}', 'NowController@show')->name('now.show');
-		Route::get('qualifications/{qualification}/{schoolyear}', 'NowController@show_year')->name('now.show.schoolyear');
-		Route::get('qualifications/{qualification}/{schoolyear}/hours', 'NowController@show_hours')->name('now.show.hours');
+	Route::group(['prefix' => 'reports'], function(){
+		Route::get('ownership', 'ReportsController@ownership')->name('reports.ownership');
 	});
-
+	
 	Route::group(['prefix' => 'settings'], function(){
 		Route::resource('tags', 'TagController', ['except' => 'show']);
 		Route::resource('tag-types', 'TagTypeController', ['except' => 'show']);

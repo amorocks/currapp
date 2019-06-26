@@ -32,8 +32,12 @@
                         <li class="nav-item @if(starts_with(Route::current()->uri, 'curriculum')) active @endif">
                             <a class="nav-link" href="{{ route('qualifications.index') }}">Cohorten</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href=""><em>Rapportages</em></a>
+                        
+                        <li class="nav-item dropdown" data-controller="dropdown">
+                            <a class="nav-link dropdown-toggle" data-target="dropdown.button" data-action="click->dropdown#toggle click@window->dropdown#hide" aria-expanded="false">Rapportages</a>
+                            <div class="dropdown-menu" data-target="dropdown.menu">
+                                <a href="{{ route('reports.ownership') }}" class="dropdown-item">Vakeigenaarschap</a>
+                            </div>
                         </li>
                         
                         <li class="nav-item dropdown" data-controller="dropdown">
