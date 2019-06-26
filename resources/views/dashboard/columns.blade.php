@@ -4,7 +4,7 @@
 
 <h2 class="mt-5 mb-4">Welkom op CurrApp 2.0</h2>
 
-<div class="card-deck">
+<div class="card-deck" style="margin-bottom: 120px"> <!-- for scrolling with fixed footer -->
 	<div class="card">
 		<h3 class="card-title p-4 m-0">Mijn vakken</h3>
 		<ul class="list-group list-group-flush">
