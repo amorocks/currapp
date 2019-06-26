@@ -2,8 +2,8 @@
 
 @section('content')
 
-    <div class="d-flex">
-        <table class="table table-hover table-striped mr-5 table-sm">
+    <div class="d-md-flex">
+        <table class="table table-hover table-striped mr-md-5 table-sm">
             <tr>
                 <th>Vak</th>
                 <th>Eigenaar</th>
@@ -18,7 +18,7 @@
             @endforeach
         </table>
 
-        <table class="table table-hover table-striped ml-5">
+        <table class="table table-hover table-striped ml-md-5 mt-5 mt-md-0">
             <tr>
                 <th>Eigenaar</th>
                 <th>Telling</th>
