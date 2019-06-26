@@ -11,9 +11,9 @@ class EditionController extends Controller
     public function update(Edition $edition, Request $request)
     {
         $this->validate(request(), [
-            'classes_per_week' => 'required|integer',
-            'hours_per_class' => 'required|numeric',
-            'review' => 'required'
+            'classes_per_week' => 'nullable|integer',
+            'hours_per_class' => 'nullable|numeric',
+            'review' => 'nullable'
         ]);
 
         $edition->classes_per_week = $request->classes_per_week;

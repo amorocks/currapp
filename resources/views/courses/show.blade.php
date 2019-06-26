@@ -70,15 +70,15 @@
 						<div class="modal-body">
 							<div class="form-group">
             					<label for="classes_per_week" class="col-form-label">Aantal lessen per week:</label>
-            					<input type="number" class="form-control" id="classes_per_week" name="classes_per_week" required value="{{ $term->pivot->classes_per_week }}">
+            					<input type="number" class="form-control" id="classes_per_week" name="classes_per_week"  value="{{ $term->pivot->classes_per_week }}">
           					</div>
           					<div class="form-group">
             					<label for="hours_per_class" class="col-form-label">Aantal uren per les:</label>
-            					<input type="number" class="form-control" id="hours_per_class" name="hours_per_class" step="0.5" required value="{{ $term->pivot->hours_per_class }}">
+            					<input type="number" class="form-control" id="hours_per_class" name="hours_per_class" step="0.5" value="{{ $term->pivot->hours_per_class }}">
           					</div>
           					<div class="form-group">
             					<label for="review" class="col-form-label">Beschrijf de toetsing van deze editie:</label>
-            					<textarea rows="3" class="form-control" id="review" name="review" required>{{ $term->pivot->review }}</textarea>
+            					<textarea rows="3" class="form-control" id="review" name="review">{{ $term->pivot->review }}</textarea>
           					</div>
 						</div>
 						<div class="modal-footer">
