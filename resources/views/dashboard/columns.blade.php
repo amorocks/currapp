@@ -31,6 +31,9 @@
 			@foreach($editions_empty as $edition)
 				<li class="list-group-item"><a href="{{ route('courses.show.edition', [$edition->course, $edition]) }}" target="_blank">{{ $edition->course->title }} in {{ $edition->term->full_title }}<i class="fas fa-external-link-alt"></a></i></li>
 			@endforeach
+			@if(!count($courses_empty) && !count($editions_empty))
+				<li class="list-group-item"><em>Goed bezig! Je hebt alles ingevuld :-)</em></li>
+			@endif
 		</ul>
 	</div>
 </div>
