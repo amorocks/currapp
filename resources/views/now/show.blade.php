@@ -55,7 +55,7 @@
                     <div class="course" style="
                         grid-column: {{ $term->order - ($year_in_study-1)*$cohort->terms_per_year + 1 }}
                     ">
-                    	@foreach($term->courses->sortBy(function($item){ return $item->type_id.$item->title; }) as $course)
+                    	@foreach($term->courses->sortBy(function($item){ return $item->type_id.$item->title; })->values()->all() as $course)
                     		<a href="{{ route('courses.show.edition', [$course, $course->pivot]) }}" target="_blank">
                                 {{ $course->type->title }} {{ $course->title }}
                             </a><br />
