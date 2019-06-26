@@ -26,6 +26,7 @@ class TypeController extends Controller
     {
         $this->validate(request(), [
             'title' => 'required|string',
+            'order' => 'required|integer',
         ]);
 
         Type::create($request->all());
@@ -42,9 +43,11 @@ class TypeController extends Controller
     {
         $this->validate(request(), [
             'title' => 'required|alpha_dash',
+            'order' => 'required|integer',
         ]);
 
         $type->title = $request->title;
+        $type->order = $request->order;
         $type->save();
 
         return redirect()->route('types.index', $type);

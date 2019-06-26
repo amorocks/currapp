@@ -21,6 +21,13 @@
                 <input type="text" class="form-control" required name="title" value="{{ old('title', $type->title) }}">
             </div>
         </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Volgorde</label>
+            <div class="col-sm-10">
+                <input type="number" class="form-control" required name="order" value="{{ old('order', $type->order) }}">
+            </div>
+        </div>
         
         {{ csrf_field() }}
 
