@@ -39,11 +39,12 @@
             @foreach($types as $key => $type)
                 <div class="topic" style="
                     grid-column: {{ $loop->iteration+1 }}
-                ">{{ $type }}</div>
-                <?php $types[$key] = $loop->iteration+1 ?>
+                ">{{ $type['title'] }}</div>
+                <?php $order[$type['id']] = $loop->iteration+1; ?>
             @endforeach
         </div>
 
+    
         @foreach($cohort->terms as $term)
 
             @if(!($loop->index % $cohort->terms_per_year))
@@ -51,7 +52,7 @@
             @endif
 
             <div class="term" style="
-                grid-template-columns: 45px repeat({{ count($types) ?: 1  }}, 1fr) 30px;
+                grid-template-columns: 45px repeat({{ count($order) ?: 1  }}, 1fr) 30px;
                 ">
                 <div class="number">
                     <a href="{{ route('qualifications.cohorts.terms.courses', [$qualification, $cohort, $term]) }}">
@@ -60,12 +61,12 @@
                 </div>
                 @foreach($term->courses as $course)
                     <div class="course" style="
-                        grid-column: {{ $types[$course->type->id] }}
+                        grid-column: {{ $order[$course->type->id] }}
                     ">
                         <a href="{{ route('courses.show.edition', [$course, $course->pivot]) }}" target="_blank">{{ $course->title }}</a>
                     </div>
                 @endforeach
-                <a class="add-course" href="{{ route('qualifications.cohorts.terms.courses', [$qualification, $cohort, $term]) }}" style="grid-column: {{ (count($types) ?: 1)+2  }};"><i class="fas fa-pen"></i></a>
+                <a class="add-course" href="{{ route('qualifications.cohorts.terms.courses', [$qualification, $cohort, $term]) }}" style="grid-column: {{ (count($order) ?: 1)+2  }};"><i class="fas fa-pen"></i></a>
             </div>
         @endforeach 
     </div>

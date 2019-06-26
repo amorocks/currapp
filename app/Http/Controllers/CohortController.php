@@ -60,9 +60,18 @@ class CohortController extends Controller
         {
             foreach ($term->courses as $course)
             {
-                $types[$course->type->id] = $course->type->title;
+                $types[$course->type->id] = [
+                    "title" => $course->type->title,
+                    "order" => $course->type->order,
+                    "id" => $course->type->id
+                ];
             }
         }
+        usort($types, function($a, $b){
+            return $a['order'] <=> $b['order'];
+        });
+
+        
 
         return view('curriculum.cohorts.show')
             ->with(compact('qualification'))
