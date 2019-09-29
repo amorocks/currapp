@@ -94,7 +94,7 @@ class ReportsController extends Controller
 
         return view('reports.tags')
             ->with('types', TagType::all())
-            ->with('cohorts', Cohort::all())
+            ->with('cohorts', Cohort::orderBy('qualification_id')->orderBy('start_year', 'DESC')->get())
             ->with(compact('type'))
             ->with(compact('cohort'))
             ->with(compact('tags'))

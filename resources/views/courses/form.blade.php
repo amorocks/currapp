@@ -114,7 +114,7 @@
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Doel, relevantie en / of achterliggende gedachte van het vak</label>
+            <label class="col-sm-2 col-form-label">Leerdoelen, relevantie en / of achterliggende gedachte van het vak</label>
             <div class="col-sm-10 py-2">
                 <input type="hidden" name="description" id="description" value="{{ old('description', $course->description) }}">
                 <trix-editor input="description" class="trix-content" style="min-height: 150px;"></trix-editor>
