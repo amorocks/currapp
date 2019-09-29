@@ -37,6 +37,8 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::group(['prefix' => 'reports'], function(){
 		Route::get('ownership', 'ReportsController@ownership')->name('reports.ownership');
 		Route::get('empty', 'ReportsController@empty')->name('reports.empty');
+		Route::get('tags/{tagtype?}/{cohort?}', 'ReportsController@tags')->name('reports.tags');
+		Route::post('tags', 'ReportsController@tags_load')->name('reports.tags_load');
 	});
 	
 	Route::group(['prefix' => 'settings'], function(){

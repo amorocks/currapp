@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\TagType;
 use App\Course;
+use App\Cohort;
 use App\User;
 
 class ReportsController extends Controller
@@ -59,3 +61,43 @@ class ReportsController extends Controller
         return view('reports.empty')
             ->with(compact('courses'));
     }
+
+    public function tags_load(Request $request)
+    {
+        return redirect()->route('reports.tags', [$request->type_id, $request->cohort_id]);
+    }
+
+    public function tags(TagType $tagtype = null, Cohort $cohort = null)
+    {
+        $type = $tagtype ?? TagType::first();
+        $cohort = $cohort ?? Cohort::where('start_year', date('Y') - 1)->first();
+        $tags = $type->tags()->orderBy('title')->get();
+
+        //Build empty array
+        $data = collect();
+        foreach($tags as $tag)
+        {
+            $data[$tag->id] = collect();
+        }
+
+        //Fill it up
+        foreach($cohort->terms as $term)
+        {
+            foreach ($term->courses as $course)
+            {
+                foreach($course->tags->where('tag_type_id', $type->id) as $tag)
+                {
+                    $data[$tag->id][] = $course;
+                }
+            }
+        }
+
+        return view('reports.tags')
+            ->with('types', TagType::all())
+            ->with('cohorts', Cohort::all())
+            ->with(compact('type'))
+            ->with(compact('cohort'))
+            ->with(compact('tags'))
+            ->with(compact('data'));
+    }
+}
