@@ -37,6 +37,7 @@
                             <a class="nav-link dropdown-toggle" data-target="dropdown.button" data-action="click->dropdown#toggle click@window->dropdown#hide" aria-expanded="false">Rapportages</a>
                             <div class="dropdown-menu" data-target="dropdown.menu">
                                 <a href="{{ route('reports.ownership') }}" class="dropdown-item">Vakeigenaarschap</a>
+                                <a href="{{ route('reports.empty') }}" class="dropdown-item">Lege vakken</a>
                             </div>
                         </li>
                         

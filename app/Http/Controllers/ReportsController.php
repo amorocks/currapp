@@ -52,4 +52,10 @@ class ReportsController extends Controller
         	->with(compact('courses'))
         	->with(compact('grouped'));
     }
-}
+
+    public function empty()
+    {
+        $courses = Course::whereNull('description')->orderBy('owner')->get();
+        return view('reports.empty')
+            ->with(compact('courses'));
+    }

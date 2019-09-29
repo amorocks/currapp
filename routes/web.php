@@ -36,6 +36,7 @@ Route::group(['middleware' => 'auth'], function(){
 
 	Route::group(['prefix' => 'reports'], function(){
 		Route::get('ownership', 'ReportsController@ownership')->name('reports.ownership');
+		Route::get('empty', 'ReportsController@empty')->name('reports.empty');
 	});
 	
 	Route::group(['prefix' => 'settings'], function(){
