@@ -3931,7 +3931,10 @@ var _class = function (_Controller) {
 
     _createClass(_class, [{
         key: "toggle",
-        value: function toggle() {
+        value: function toggle(event) {
+
+            if (event.target.tagName == "A" && event.target.href != "") return;
+
             if (this.collapseTarget.classList.contains("show")) {
                 this.collapseTarget.classList.remove("show");
             } else {

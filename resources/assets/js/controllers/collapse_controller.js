@@ -4,7 +4,10 @@ export default class extends Controller {
 
     static targets = ["collapse"];
 
-    toggle() {
+    toggle(event) {
+
+        if(event.target.tagName == "A" && event.target.href != "") return;
+
         if(this.collapseTarget.classList.contains("show"))
         {
             this.collapseTarget.classList.remove("show");
