@@ -14,10 +14,10 @@
 @section('content')
 
     @if($course->exists)
-        <form method="POST" action="{{ route('courses.update', $course) }}">
+        <form method="POST" action="{{ route('courses.update', $course) }}" enctype="multipart/form-data">
         {{ method_field('PATCH') }}
     @else
-        <form method="POST" action="{{ route('courses.store') }}">
+        <form method="POST" action="{{ route('courses.store') }}" enctype="multipart/form-data">
     @endif
 
         <div class="form-group row">
@@ -111,6 +111,12 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Bogenplan o.i.d.</label>
+            <div class="col-sm-10 py-2">
+                <input type="file" name="image" value="{{ old('image', $course->image) }}">
             </div>
         </div>
         <div class="form-group row">

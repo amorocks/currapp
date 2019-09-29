@@ -8,6 +8,7 @@ use App\Edition;
 use App\Term;
 use App\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage; 
 use Auth;
 
 class CourseController extends Controller
@@ -40,7 +41,8 @@ class CourseController extends Controller
             'type_id' => 'required|integer|min:1',
             'owner' => 'required|alpha_dash',
             'link' => 'nullable|url',
-            'order' => 'nullable|integer'
+            'order' => 'nullable|integer',
+            'image' => 'nullable|image',
         ]);
 
         $course = new Course();
@@ -50,11 +52,19 @@ class CourseController extends Controller
         $course->link = $request->link;
         $course->order = $request->order ?? 0;
         $course->description = $request->description;
-        $course->save();
 
+        if($request->hasFile('image'))
+        {
+            $extension = $request->image->getClientOriginalExtension();
+            $filename = 'asset_course_' . uniqid() . '.' . $extension;
+            $path = Storage::disk('public')->putFileAs('uploads/assets', $request->image, $filename);
+            $course->image = $path;
+        }
+
+        $course->save();
         $course->tags()->sync($request->tags);
 
-        return redirect()->route('courses.index');
+        return redirect()->route('courses.show', $course);
     }
 
     public function show(Course $course)
@@ -99,7 +109,8 @@ class CourseController extends Controller
             'type_id' => 'required|integer|min:1',
             'owner' => 'required|alpha_dash',
             'link' => 'nullable|url',
-            'order' => 'nullable|integer'
+            'order' => 'nullable|integer',
+            'image' => 'nullable|image',
         ]);
 
         $course->title = $request->title;
@@ -108,8 +119,16 @@ class CourseController extends Controller
         $course->link = $request->link;
         $course->order = $request->order ?? 0;
         $course->description = $request->description;
-        $course->save();
 
+        if($request->hasFile('image'))
+        {
+            $extension = $request->image->getClientOriginalExtension();
+            $filename = 'asset_course_' . uniqid() . '.' . $extension;
+            $path = Storage::disk('public')->putFileAs('uploads/assets', $request->image, $filename);
+            $course->image = $path;
+        }
+        
+        $course->save();
         $course->tags()->sync($request->tags);
 
         return redirect()->route('courses.show', $course);

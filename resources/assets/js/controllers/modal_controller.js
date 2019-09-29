@@ -5,7 +5,8 @@ export default class extends Controller {
 
     static targets = ["modal"];
 
-    open() {
+    open(event) {
+        event.preventDefault();
         this.modalTarget.classList.add("modal-open");
         this.modalTarget.setAttribute("style", "display: block;");
         this.modalTarget.classList.add("show");

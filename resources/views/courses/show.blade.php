@@ -13,9 +13,26 @@
 
 <div class="course">
 	<div class="d-flex justify-content-between">
-		<div>
+		<div data-controller="modal">
 			<h2 class="mb-0">{{ $course->title }}</h2>
 			<p class="lead font-weight-bold text-muted mb-0">{{ $course->type }}, vakeigenaar {{ $course->owner }}</p>
+			@if($course->image)
+				<p class="m-0"><a href="{{ asset('storage/' . $course->image) }}" data-action="click->modal#open">Bogenplan o.i.d. <i class="fas fa-external-link-alt"></i></a></p>
+				<div class="modal fade" data-target="modal.modal">
+					<div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable" role="document">
+						<div class="modal-content">
+							<div class="modal-body text-center">
+								<img src="{{ asset('storage/' . $course->image) }}" alt="bogenplan">
+							</div>
+							<div class="modal-footer">
+	                            <button type="button" class="btn btn-success" data-action="click->modal#close">
+	                                <i class="fas fa-check" aria-hidden="true"></i> Klaar
+	                            </button>
+	                        </div>
+	                    </div>
+					</div>
+				</div>
+			@endif
 		</div>
 		<div>
 			@foreach($course->tags as $tag)

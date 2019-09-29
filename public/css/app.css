@@ -12268,3 +12268,7 @@ small .color-circle {
           box-shadow: 1px 1px 3px 0px #ccc;
 }
 
+.modal img {
+  max-width: 100%;
+}
+
