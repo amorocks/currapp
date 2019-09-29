@@ -28,7 +28,7 @@ Route::group(['middleware' => 'auth'], function(){
 
 	Route::group(['prefix' => 'curriculum'], function(){
 		Route::resource('qualifications', 'QualificationController', ['except' => ['show']]);
-		Route::resource('qualifications.cohorts', 'CohortController', ['only' => ['index', 'create', 'store', 'show']]);
+		Route::resource('qualifications.cohorts', 'CohortController', ['only' => ['create', 'store', 'show']]);
 		Route::resource('qualifications.cohorts.assets', 'CohortAssetController', ['only' => ['index', 'show']]);
 		Route::resource('qualifications.cohorts.terms', 'TermController', ['only' => ['create', 'store']]);
 		Route::get('/qualifications/{qualification}/cohorts/{cohort}/terms/{term}/courses', 'TermController@courses')->name('qualifications.cohorts.terms.courses');

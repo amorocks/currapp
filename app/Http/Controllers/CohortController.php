@@ -11,13 +11,6 @@ use Illuminate\Http\Request;
 class CohortController extends Controller
 {
 
-    public function index(Qualification $qualification)
-    {
-        return view('curriculum.cohorts.index')
-            ->with('qualification', $qualification)
-            ->with('cohorts', $qualification->cohorts()->orderBy('start_year', 'desc')->get());
-    }
-
     public function create(Qualification $qualification)
     {
         return view('curriculum.cohorts.create')
