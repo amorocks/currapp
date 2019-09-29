@@ -67,9 +67,9 @@
                     </option>
                 @endforeach
             </select>
-            <div class="col-sm-10 d-flex align-items-center" data-target="tags.tags">
+            <div class="col-sm-10 d-flex align-items-center flex-wrap" data-target="tags.tags">
                 @foreach($course->tags as $tag)
-                    <span id="badge-{{ $tag->id }}" class="badge badge-pill mr-2" style="background-color: {{ $tag->type->back_color }}; color: {{ $tag->type->text_color }};">{{ $tag->title }}</span>
+                    <span id="badge-{{ $tag->id }}" class="badge badge-pill mr-2 mb-2" style="background-color: {{ $tag->type->back_color }}; color: {{ $tag->type->text_color }};">{{ $tag->title }}</span>
                 @endforeach
                 <span id="add-link"><a data-action="click->modal#open">+ aanpassen</a></span>
                 <div class="modal fade" data-target="modal.modal">
