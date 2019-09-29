@@ -17,6 +17,11 @@ class Term extends Model
     {
         return $this->belongsToMany('App\Course', 'editions')->using('App\Edition')->withPivot('id', 'classes_per_week', 'hours_per_class', 'review');
     }
+    
+    public function assets()
+    {
+        return $this->morphMany('App\Asset', 'assetable');
+    }
 
     public function getCoursesAttribute($value)
     {

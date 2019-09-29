@@ -19,11 +19,6 @@ class Cohort extends Model
         return $this->hasMany('App\Term')->orderBy('order');
     }
 
-    public function assets()
-    {
-        return $this->morphMany('App\Asset', 'assetable');
-    }
-
     public function getTitleAttribute($nospaces = false, $separator = '-')
     {
         $title = $this->start_year;

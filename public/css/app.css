@@ -11841,6 +11841,10 @@ a.text-gray:focus {
   color: #C2C7CC !important;
 }
 
+.nav-tabs .nav-link {
+  color: #495057 !important;
+}
+
 .navbar .nav-item {
   padding: 4px 1rem;
   font-family: sans-serif;

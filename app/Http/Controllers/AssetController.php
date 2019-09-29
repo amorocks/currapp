@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Asset;
-use App\Cohort;
+use App\Term;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage; 
 use App\Traits\GetTemporaryUrl;
@@ -59,9 +59,9 @@ class AssetController extends Controller
         $asset->save();
 
         switch ($assetable_type) {
-            case 'cohort':
-                $cohort = Cohort::find($assetable_id);
-                return redirect()->route('qualifications.cohorts.assets.index', [$cohort->qualification, $cohort]);
+            case 'term':
+                $term = Term::find($assetable_id);
+                return redirect()->route('qualifications.cohorts.terms.assets.index', [$term->cohort->qualification, $term->cohort, $term]);
                 break;
             
             default:
