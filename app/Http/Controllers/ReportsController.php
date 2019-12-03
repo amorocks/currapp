@@ -71,7 +71,7 @@ class ReportsController extends Controller
     {
         $type = $tagtype ?? TagType::first();
         $cohort = $cohort ?? Cohort::where('start_year', date('Y') - 1)->first();
-        $tags = $type->tags()->orderBy('title')->get();
+        $tags = $type->tags;
 
         //Build empty array
         $data = collect();
@@ -81,15 +81,18 @@ class ReportsController extends Controller
         }
 
         //Fill it up
-
-            foreach ($cohort->courses as $course)
+        foreach ($cohort->courses as $course)
+        {
+            foreach($course->tags->where('tag_type_id', $type->id) as $tag)
             {
-                foreach($course->tags->where('tag_type_id', $type->id) as $tag)
-                {
-                    $data[$tag->id][] = $course;
-                }
+                $data[$tag->id][] = $course;
             }
+        }
         
+        //Sort by count of tags
+        $tags = $tags->sortBy(function($tag, $key) use($data){
+            return count($data[$tag->id]);
+        });
 
         return view('reports.tags')
             ->with('types', TagType::all())
