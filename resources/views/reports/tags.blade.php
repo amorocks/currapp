@@ -59,7 +59,7 @@
                     @endif
                     <div class="collapse m-0" data-target="collapse.collapse">
                         @foreach($data[$tag->id] as $course)
-                            <a href="{{ route('courses.show.edition', [$course, $course->pivot]) }}">{{ $course->title }} - {{ $course->pivot->term->title }}</a><br />  
+                            <a href="{{ route('courses.show', $course) }}">{{ $course->title }}</a><br />  
                         @endforeach
                     </ul>
                 </td>

@@ -81,16 +81,15 @@ class ReportsController extends Controller
         }
 
         //Fill it up
-        foreach($cohort->terms as $term)
-        {
-            foreach ($term->courses as $course)
+
+            foreach ($cohort->courses as $course)
             {
                 foreach($course->tags->where('tag_type_id', $type->id) as $tag)
                 {
                     $data[$tag->id][] = $course;
                 }
             }
-        }
+        
 
         return view('reports.tags')
             ->with('types', TagType::all())

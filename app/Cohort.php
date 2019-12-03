@@ -19,6 +19,14 @@ class Cohort extends Model
         return $this->hasMany('App\Term')->orderBy('order');
     }
 
+    public function getCoursesAttribute()
+    {
+        $result = \DB::select(\DB::raw("SELECT courses.* FROM terms INNER JOIN editions ON terms.id = editions.term_id INNER JOIN courses ON courses.id = editions.course_id WHERE terms.cohort_id=:term GROUP BY courses.id"), [
+            "term" => $this->id
+        ]);
+        return \App\Course::hydrate($result);
+    }
+
     public function getTitleAttribute($nospaces = false, $separator = '-')
     {
         $title = $this->start_year;
